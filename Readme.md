@@ -9,8 +9,8 @@
 # Checklist de Ejercicios OBLIGATORIOS por unidad
 
 ## Unidad 1: Introducción y Herramientas de Desarrollo
--  [ ] Readme.md
--  [ ] .gitignore
+-  [x] Readme.md
+-  [x] .gitignore
 
 ## Unidad 2: Fundamentos de HTML5 y CSS3
 
@@ -30,20 +30,20 @@
 -  [x] Multimedia
 
 ### CSS
--  [ ] Propiedades tipográficas
--  [ ] Incrustado
--  [ ] Estilo con Descendientes
--  [ ] Pseudo Clases
--  [ ] CV
--  [ ] Backgrounds
--  [ ] Position
--  [ ] 2 Columnas
--  [ ] Grid
--  [ ] grid-areas
--  [ ] Mejora
--  [ ] Transitions
+-  [x] Propiedades tipográficas
+-  [x] Incrustado
+-  [x] Estilo con Descendientes
+-  [x] Pseudo Clases
+-  [x] CV
+-  [x] Backgrounds
+-  [x] Position
+-  [x] 2 Columnas
+-  [x] Grid
+-  [x] grid-areas
+-  [x] Mejora
+-  [x] Transitions
 -  [ ] Viewport
--  [ ] Responsive
+-  [x] Responsive
 
 ## Unidad 3: JavaScript y ES6+
 
