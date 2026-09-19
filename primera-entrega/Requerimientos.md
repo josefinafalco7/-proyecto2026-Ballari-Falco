@@ -54,7 +54,7 @@
 - [ ] Poner comillas a todos los atributos
 - [X] **Title** debe contener el título de la página
 - [X] En el ```<head></head>``` incluir las etiquetas ```<meta>``` detallando: autor, descripción y palabras clave
-- [ ] Emplear al menos 3 etiquetas semánticas diferentes
+- [X] Emplear al menos 3 etiquetas semánticas diferentes
 - [ ] Emplear ```<header></header>```. En el contenido de la cabecera debe haber un título ```<h1></h1>```, puede tener color de fondo, algún logotipo, etc.
 - [ ] La estructura de la página debe estar definida con ```<div></div>```
 - [ ] Debe contener al menos 3 elementos de tipo ```<input>``` o ```<select>``` o ```<button>``` que le permitan al usuario ingresar valores para poder realizar un cálculo de un ejercicio o seleccionar opciones o llamar a una función.
