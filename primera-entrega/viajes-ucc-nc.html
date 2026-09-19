@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="es">
+    <head>
+        <meta charset="UTF-8">
+        <title>UCC Carpooling - Viajes UCC a Nueva Córdoba</title>
+        <meta content="Josefina Falco" name="author">
+        <meta content="Web para hacer carpooling a la UCC" name="descripcion">
+        <meta content="carpooling, ucc, universidad, transporte" name="palabras-principales">
+        <link rel="stylesheet" href="miestilo.css" type="text/css">
+    </head>
+<body>
+
+    <header>
+        <a href="index.html">UCC Carpool</a>
+
+        <div>
+            <a href="index.html">Salir</a>
+        </div>
+    </header>
+
+    <main>
+ 
+        <!-- Miga de pan para volver a elegir dirección -->
+        <p>
+            <a href="pasajero.html">&larr; Cambiar dirección</a>
+        </p>
+ 
+        <section>
+            <h1>Viajes disponibles</h1>
+ 
+            <p>UCC &rarr; Nueva Córdoba</p>
+ 
+            <!--
+                Acá va a ir la cantidad de viajes encontrados,
+                calculada por JS a partir de los datos guardados (localStorage).
+                Ejemplo futuro: "3 viajes encontrados"
+            -->
+            <p id="cantidad-viajes"></p>
+ 
+            <!--
+                Esta lista arranca vacía a propósito.
+                Más adelante, JS va a leer los viajes guardados por el conductor
+                (localStorage) y va a generar un <li> por cada viaje acá adentro,
+                usando la misma estructura de fieldset/legend que veníamos usando:
+ 
+                <li>
+                    <fieldset>
+                        <legend>Hora de salida</legend>
+                        <p>Nombre del conductor</p>
+                        <p>Asientos disponibles · Punto de encuentro</p>
+                        <p>Precio</p>
+                        <a href="detalle-viaje-X.html">Ver detalle &rarr;</a>
+                    </fieldset>
+                </li>
+            -->
+            <ul id="lista-viajes">
+            </ul>
+ 
+            <!--
+                Mensaje para cuando no haya viajes cargados todavía.
+                Por ahora queda siempre visible, porque la lista de arriba
+                siempre está vacía sin JS. Más adelante, JS lo va a ocultar
+                automáticamente si encuentra viajes guardados.
+            -->
+            <p id="sin-viajes">No hay viajes disponibles en este horario todavía.</p>
+ 
+        </section>
+ 
+    </main>
+ 
+    <footer>
+        <p>UCC Carpool · Universidad Católica de Córdoba · 2026</p>
+    </footer>
+ 
+</body>
+</html>
