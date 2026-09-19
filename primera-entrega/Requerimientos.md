@@ -68,11 +68,11 @@
 - [ ] Los ids de los elementos deben ser unívocos
 
 ## Imágenes
-- [ ] Debe contener por lo menos una etiqueta ```<img>``` en la página.
+- [X] Debe contener por lo menos una etiqueta ```<img>``` en la página.
 - [ ] Todas las imágenes deben ser incluidas en el repositorio dentro de una carpeta llamada **imagenes** (salvo que sean demasiado pesadas. En ese caso, se puede emplear un servidor externo).
 - [ ] No se deben subir videos en el repositorio (excepto que sean MUY livianos).
-- [ ] Toda imagen debe tener su atributo alt
-- [ ] Las imágenes deben poseer un nombre representativo 
+- [x] Toda imagen debe tener su atributo alt
+- [X] Las imágenes deben poseer un nombre representativo 
 
 ## Sobre el CSS
 - [ ] El estilo de los elementos debe establecerse en un archivo CSS (prohibido poner el atributo style a los elementos o emplear estilos incrustados).
