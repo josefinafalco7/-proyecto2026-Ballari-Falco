@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="es">
+    <head>
+        <meta charset="UTF-8">
+        <title>UCC Carpooling</title>
+        <meta content="Josefina Falco" name="author">
+        <meta content="Web para hacer carpooling a la UCC" name="descripcion">
+        <meta content="carpooling, ucc, universidad, transporte" name="palabras-principales">
+        <link rel="stylesheet" href="miestilo.css" type="text/css">
+    </head>
+<body>
+    <header>
+        <a href="index.html">UCC Carpool</a>
+    </header>
+    <main>
+        <!-- Sección: crear cuenta -->
+         <section>
+            <h2>Crear cuenta</h2>
+            <p>Registrate para reservar viajes</p>
+
+            <form>
+                <fieldset>
+                    <legend>Datos personales</legend>
+
+                    <div>
+                        <label for="registro-nombre">Nombre</label>
+                        <input type="text" id="registro-nombre" name="registro-nombre" required>
+                    </div>
+
+                    <div>
+                        <label for="registro-apellido">Apellido</label>
+                        <input type="text" id="registro-apellido" name="registro-apellido" required>
+                    </div>
+                </fieldset>
+
+                <fieldset>
+                    <legend>Tipo de cuenta</legend>
+
+                    <div>
+                        <input type="radio" id="tipo-pasajero" name="tipo-cuenta" value="pasajero" checked>
+                        <label for="tipo-pasajero">Solo Pasajero</label>
+                    </div>
+
+                    <div>
+                        <input type="radio" id="tipo-conductor" name="tipo-cuenta" value="conductor">
+                        <label for="tipo-conductor">Solo Conductor</label>
+                    </div>
+
+                    <div>
+                        <input type="radio" id="tipo-ambos" name="tipo-cuenta" value="ambos">
+                        <label for="tipo-ambos">Ambos (pasajero y conductor)</label>
+                    </div>
+                </fieldset>
+
+                <fieldset>
+                    <legend>Acceso</legend>
+
+                    <div>
+                        <label for="registro-email">Email universitario</label>
+                        <input type="email" id="registro-email" name="registro-email" placeholder="tuemail@ucc.edu.ar" required>
+                    </div>
+
+                    <div>
+                        <label for="registro-password">Contraseña</label>
+                        <input type="password" id="registro-password" name="registro-password" placeholder="••••••••" required>
+                    </div>
+                </fieldset>
+
+                <button type="submit">Crear cuenta</button>
+            </form>
+        </section>
+
+        <hr>
+
+        <!-- Sección: iniciar sesión -->
+         <section>
+            <h2>Iniciar sesión</h2>
+            <p>Ingresá con tu cuenta existente</p>
+
+            <form>
+                <fieldset>
+                    <legend>Acceso</legend>
+
+                    <div>
+                        <label for="login-email">Email universitario</label>
+                        <input type="email" id="login-email" name="login-email" placeholder="tuemail@ucc.edu.ar" required>
+                    </div>
+
+                    <div>
+                        <label for="login-password">Contraseña</label>
+                        <input type="password" id="login-password" name="login-password" placeholder="••••••••" required>
+                    </div>
+                </fieldset>
+
+                <button type="submit">Ingresar</button>
+            </form>
+        </section>
+
+    </main>
+</body>
+</html>
+
