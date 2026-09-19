@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="es">
+    <head>
+        <meta charset="UTF-8">
+        <title>UCC Carpooling - Pasajero</title>
+        <meta content="Josefina Falco" name="author">
+        <meta content="Web para hacer carpooling a la UCC" name="descripcion">
+        <meta content="carpooling, ucc, universidad, transporte" name="palabras-principales">
+        <link rel="stylesheet" href="miestilo.css" type="text/css">
+    </head>
+<body>
+
+    <header>
+        <a href="index.html">UCC Carpool</a>
+
+        <div>
+            <a href="index.html">Salir</a>
+        </div>
+    </header>
+
+  <main>
+ 
+        <section>
+            <div>
+                <h1>Mis viajes publicados</h1>
+                <p>Administrá tus viajes como conductor</p>
+            </div>
+ 
+            <a href="publicar-viaje.html">+ Publicar viaje</a>
+        </section>
+ 
+        <section>
+            <!--
+                Esta lista arranca vacía a propósito, igual que en las páginas
+                de viajes del pasajero. Más adelante, JS va a leer los viajes
+                guardados (localStorage) por este mismo conductor y va a
+                generar un <li> por cada uno acá adentro:
+ 
+                <li>
+                    <fieldset>
+                        <legend>Hora de salida</legend>
+                        <p>Dirección (UCC &rarr; Nueva Córdoba, etc.)</p>
+                        <p>Asientos disponibles · Precio</p>
+                        <a href="editar-viaje.html">Editar</a>
+                        <a href="#">Cancelar viaje</a>
+                    </fieldset>
+                </li>
+            -->
+            <ul id="lista-mis-viajes">
+            </ul>
+ 
+            <!-- Estado vacío -->
+            <div id="sin-viajes-publicados">
+                <h2>Sin viajes publicados</h2>
+                <p>Todavía no publicaste ningún viaje</p>
+                <a href="publicar-viaje.html">Publicar mi primer viaje</a>
+            </div>
+        </section>
+ 
+    </main>
+ 
+    <footer>
+        <p>UCC Carpool · Universidad Católica de Córdoba · 2026</p>
+    </footer>
+ 
+</body>
+</html>  
