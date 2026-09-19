@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="es">
+    <head>
+        <meta charset="UTF-8">
+        <title>UCC Carpooling - Publicar viaje</title>
+        <meta content="Josefina Falco" name="author">
+        <meta content="Web para hacer carpooling a la UCC" name="descripcion">
+        <meta content="carpooling, ucc, universidad, transporte" name="palabras-principales">
+        <link rel="stylesheet" href="miestilo.css" type="text/css">
+    </head>
+<body>
+
+    <header>
+        <a href="index.html">UCC Carpool</a>
+
+        <div>
+            <a href="index.html">Salir</a>
+        </div>
+    </header>
+
+    <main>
+
+        <!-- Migas de pan: volver al listado o ir directo a Mis viajes -->
+        <p>
+            <a href="conductor.html">&larr; Volver</a>
+            <a href="conductor.html">Mis viajes &rarr;</a>
+        </p>
+
+        <section>
+            <h1>Publicar un viaje</h1>
+            <p>Completá los datos para que los pasajeros puedan encontrarte</p>
+
+            <form>
+                <fieldset>
+                    <legend>Ruta y horario</legend>
+
+                    <div>
+                        <label for="direccion">Dirección </label>
+                        <select id="direccion" name="direccion" required>
+                            <option value="ucc-nc">UCC &rarr; Nueva Córdoba</option>
+                            <option value="nc-ucc">Nueva Córdoba &rarr; UCC</option>
+                        </select>
+                    </div>
+
+                    <div>
+                        <label for="hora">Hora de salida </label>
+                        <input type="time" id="hora" name="hora" required>
+                    </div>
+
+                    <div>
+                        <label for="fecha">Fecha </label>
+                        <input type="date" id="fecha" name="fecha" required>
+                    </div>
+                </fieldset>
+
+                <fieldset>
+                    <legend>Asientos y precio</legend>
+
+                    <div>
+                        <label for="asientos">Asientos disponibles </label>
+                        <input type="number" id="asientos" name="asientos" placeholder="ej: 3" min="1" max="4" required>
+                    </div>
+
+                    <div>
+                        <label for="precio">Precio por asiento </label>
+                        <input type="number" id="precio" name="precio" placeholder="500" min="0" required>
+                    </div>
+                </fieldset>
+
+                <fieldset>
+                    <legend>Punto de encuentro</legend>
+
+                    <div>
+                        <label for="punto-encuentro">¿Dónde te encontrás con los pasajeros? </label>
+                        <input type="text" id="punto-encuentro" name="punto-encuentro" placeholder="ej: Portón principal UCC" required>
+                    </div>
+                </fieldset>
+
+                <button type="submit">Publicar viaje</button>
+            </form>
+        </section>
+
+    </main>
+
+    <footer>
+        <p>UCC Carpool · Universidad Católica de Córdoba · 2026</p>
+    </footer>
+
+</body>
+</html>
