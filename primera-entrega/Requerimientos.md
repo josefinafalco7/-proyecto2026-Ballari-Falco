@@ -38,7 +38,7 @@
 
 ## Proyecto general
 - [ ] NO está permitido descargar un TEMPLATE (diseño 100% desde cero)
-- [ ] La página principal debe llamarse index
+- [x] La página principal debe llamarse index
 - [ ] La estructura del proyecto debe ser adecuada (crear una carpeta para las imágenes, otra para los sketch/mockups).
 - [ ] Identar correctamente el código
 - [ ] No debe haber errores presentes (en Webstorm *Code* > *Inspect Code* para verificar que no haya errores)
