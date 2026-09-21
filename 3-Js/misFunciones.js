@@ -1,9 +1,9 @@
 /**
- * Descripción
- * @method Nombre de la función
- * @param Parámetro A
- * @param Parámetro B
- * @return Valor que retorna
+ * Conversión de unidades de yardas, pies, pulgadas y metros.
+ * @method conventirUnidades
+ * @param {string} id - Id del elemento input en el html
+ * @param {number} valor - Valor a convertir
+ * @return {void}
  */
 
 function conventirUnidades(id, valor) {
