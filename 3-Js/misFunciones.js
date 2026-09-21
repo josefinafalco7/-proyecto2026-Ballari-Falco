@@ -29,6 +29,12 @@ if(isNaN(valor)){
         document.getElementById("metro").value = valor * 1.09361;
     }
 }
+/**
+ * Conversión de unidades de grados a radianes
+ * @method conventirGR
+ * @param {string} id - Id del elemento input en el html
+ */
+
     function convertirGR(id) {
         let grad, rad;
         if(id == "grados") {
