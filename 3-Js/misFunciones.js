@@ -3,33 +3,48 @@
  * @method conventirUnidades
  * @param {string} id - Id del elemento input en el html
  * @param {number} valor - Valor a convertir
- * @return {void}
+ * @return 
  */
 
 function conventirUnidades(id, valor) {
-    let metro, pulgada, pie, yarda;
+    var metro, pulgada, pie, yarda;
+
+    if(valor.includes(",")){
+        valor = valor.replace(",", ".");
+    }
+
 if(isNaN(valor)){
     alert("Se ingresó un valor incorrecto: " + id);
-    document.getElementById("pulgada").value = valor * "";
-        document.getElementById("pie").value = valor * "";
-        document.getElementById("yarda").value = valor * "";
+    metro = "";
+    pulgada = "";
+    pie = "";
+    yarda = "";
+}   else if(id == "metro") {
+        metro = valor;
+        pulgada = valor * 3.28084;
+        pie = valor * 39.3701;
+        yarda = valor * 1.09361;
+    }else if(id == "pulgada") {
+        pulgada = valor;
+        metro = valor * 0.0254;
+        pie = valor * 0.0833333;
+        yarda = valor * 0.0277778;
+    }else if(id == "pie") {
+        pulgada = valor * 39.3701;
+        metro = valor * 3.28084;
+        yarda = valor * 1.09361;
+    }else if(id == "yarda") {
+        pulgada = valor * 39.3701;
+        pie = valor * 3.28084;
+        metro = valor * 1.09361;
     }
-    else if(id == "metro") {
-        document.getElementById("pulgada").value = valor * 39.3701;
-        document.getElementById("pie").value = valor * 3.28084;
-        document.getElementById("yarda").value = valor * 1.09361;
-    }
-     else if(id == "pie") {
-        document.getElementById("pulgada").value = valor * 39.3701;
-        document.getElementById("metro").value = valor * 3.28084;
-        document.getElementById("yarda").value = valor * 1.09361;
-    }
- else if(id == "yarda") {
-        document.getElementById("pulgada").value = valor * 39.3701;
-        document.getElementById("pie").value = valor * 3.28084;
-        document.getElementById("metro").value = valor * 1.09361;
-    }
+
+    document.lasUnidades.unid_metro.value =Math.round(metro*100)/100;
+    document.lasUnidades.unid_pulgada.value = Math.round(pulgada*100)/100;
+    document.lasUnidades.unid_pie.value = Math.round(pie*100)/100;
+    document.lasUnidades.unid_yarda.value = Math.round(yarda*100)/100;
 }
+
 /**
  * Conversión de unidades de grados a radianes
  * @method conventirGR

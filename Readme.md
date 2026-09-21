@@ -51,11 +51,11 @@
 -  [x] Conversor de Unidades
 -  [x] Documentación
 -  [x] Grados a Radianes
--  [ ] Refactorización
+-  [x] Refactorización
 -  [x] Mostrar/Ocultar div
 -  [x] Mostrar/Ocultar Dialog
 -  [ ] Operaciones Matemáticas
--  [ ] Conversor de Unidades II
+-  [x] Conversor de Unidades II
 -  [x] Operaciones Matemáticas II
 -  [ ] Renderizado Dinámico
 -  [ ] Renderizado Dinámico del Dialog
