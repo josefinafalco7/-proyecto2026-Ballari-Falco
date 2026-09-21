@@ -42,14 +42,14 @@
 -  [x] grid-areas
 -  [x] Mejora
 -  [x] Transitions
--  [ ] Viewport
+-  [x] Viewport
 -  [x] Responsive
 
 ## Unidad 3: JavaScript y ES6+
 
--  [ ] Hola Mundo!
--  [ ] Conversor de Unidades
--  [ ] Documentación
+-  [x] Hola Mundo!
+-  [x] Conversor de Unidades
+-  [x] Documentación
 -  [ ] Grados a Radianes
 -  [ ] Refactorización
 -  [ ] Mostrar/Ocultar div
