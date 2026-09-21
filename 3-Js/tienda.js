@@ -79,6 +79,8 @@ document.getElementById("mostrar-catalogo").innerHTML = contenido;
 }
 
 let mostrarModal = (id) => {
+  document.getElementById("titulo-producto").innerText = productos[id].nombre;
+  document.getElementById("descr-producto").innerText = productos[id].description;
   document.getElementById("modal").style.display = "block";
 };
 
