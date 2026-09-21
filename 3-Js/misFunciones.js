@@ -85,26 +85,26 @@ function calcularSuma() {
     var num1, num2;
     num1 = Number(document.getElementById("nums1").value);
     num2 = Number(document.getElementById("nums2").value);
-    document.getElementById("totalS").value = num1 + num2;
+    document.getElementById("totalS").innerHTML = num1 + num2;
 }
 
 function calcularResta() {
     var num1, num2;
     num1 = Number(document.getElementById("numr1").value);
     num2 = Number(document.getElementById("numr2").value);
-    document.getElementById("totalR").value = num1 - num2;
+    document.getElementById("totalR").innerHTML = num1 - num2;
 }
 
 function calcularMultiplicacion() {
     var num1, num2;
     num1 = Number(document.getElementById("numm1").value);
     num2 = Number(document.getElementById("numm2").value);
-    document.getElementById("totalM").value = num1 * num2;
+    document.getElementById("totalM").innerHTML = num1 * num2;
 }
 
 function calcularDivision() {
     var num1, num2;
     num1 = Number(document.getElementById("numd1").value);
     num2 = Number(document.getElementById("numd2").value);
-    document.getElementById("totalD").value = num1 / num2;
+    document.getElementById("totalD").innerHTML = num1 / num2;
 }
