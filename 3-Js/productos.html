@@ -3,9 +3,9 @@
 <head>
     <link href="catalogo.css" rel="stylesheet" type="text/css">
 <title>Catalogo de Productos</title>
-<script type ="text/javascript" src="misFunciones.js"></script>
+<script type ="text/javascript" src="tienda.js"></script>
 </head>
-<body class="grid-container"
+<body class="grid-container" onload="cargarProductos()">
 <header class="item">
     Catalogo de Productos
 </header>
@@ -49,14 +49,15 @@
     </form>
     Filtros
 </aside>
-<main class="item4">
-    <dialog id="modal">
+
+<dialog id="modal">
         <h2>Detalle del Producto</h2>
         <h3>Cabezal Cerrado</h3>
         <p>Cabezal de Sparring. Disponible del talle 1 al 13. En color rojo y azul</p>
         <button type="button" onclick="cerrarModal()">Cerrar</button>
-    
     </dialog>
+
+<main class="item4" id="mostrar-catalogo">
     <div>
         <img src=" https://ucc-tallerdesarrolloweb.github.io/filminas/images/ejercicios/cabezal-cerrado.webp" alt="Cabezal Cerrados">
     <h3>Cabezal Cerrados</h3>
