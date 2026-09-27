@@ -26,15 +26,18 @@ a { color: inherit; text-decoration: none; }
 
 .encabezado { display: flex; align-items: center; justify-content: space-between; padding: 18px 32px; border-bottom: 1px solid var(--border-dark); }
 .marca { font-size: 20px; font-weight: bold; }
-.ucc { color: var(--text-on-dark); }
-.carpool { color: var(--accent); }
+.marca-ucc, .ucc { color: var(--text-on-dark); }
+.marca-carpool, .carpool { color: var(--accent); }
 .acciones-encabezado .boton { padding: 8px 18px; }
 
 .contenido-principal { max-width: 760px; margin: 0 auto; padding: 32px 20px 60px; }
 .migas-de-pan { display: flex; justify-content: space-between; margin-bottom: 22px; font-size: 14px; }
 .enlace-migas { color: var(--accent); }
 .enlace-migas:hover { text-decoration: underline; }
-.seccion-contenido { background-color: var(--surface); color: var(--text); border-radius: var(--radius); padding: 28px 30px; margin-bottom: 24px; }
+
+/* seccion-contenido y seccion-portada comparten la tarjeta blanca de base */
+.seccion-contenido, .seccion-portada { background-color: var(--surface); color: var(--text); border-radius: var(--radius); padding: 28px 30px; margin-bottom: 24px; }
+
 .fila-encabezado-seccion { display: flex; align-items: center; justify-content: space-between; gap: 16px; }
 .texto-secundario { color: var(--texto-secundario); }
 .pie-de-pagina { text-align: center; padding: 24px; font-size: 13px; color: var(--text-on-dark-muted); }
@@ -47,15 +50,19 @@ a { color: inherit; text-decoration: none; }
 .boton-fantasma { background-color: transparent; color: var(--text-on-dark); border: 1px solid var(--text-on-dark-muted); padding: 8px 18px; font-weight: normal; }
 .boton-fantasma:hover { background-color: var(--bg-elevated); }
 .boton-completo { display: block; width: 100%; text-align: center; }
+.boton:disabled { opacity: .5; cursor: not-allowed; }
 
-.portada { text-align: center; padding: 50px 30px; }
+/* portada y seccion-portada comparten el centrado del hero */
+.portada, .seccion-portada { text-align: center; padding: 50px 30px; }
 .etiqueta { display: inline-block; background-color: var(--surface-muted); color: var(--text); border-radius: 999px; padding: 6px 16px; font-size: 12px; font-weight: bold; letter-spacing: .04em; text-transform: uppercase; margin-bottom: 18px; }
 .titulo-portada { font-size: 36px; margin-bottom: 14px; }
 .titulo-portada em { color: var(--accent); font-style: normal; }
 .subtitulo-portada { font-size: 16px; max-width: 480px; margin-left: auto; margin-right: auto; }
 .texto-portada { color: var(--texto-secundario); max-width: 480px; margin-left: auto; margin-right: auto; font-size: 14px; }
 .grilla-opciones { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; margin-top: 30px; }
-.tarjeta-rol { background-color: var(--accent); border-radius: var(--radius); padding: 24px 18px; text-align: center; display: block; transition: transform .15s ease; }
+
+/* Corregido: la tarjeta base va con fondo neutro, solo la destacada lleva el dorado */
+.tarjeta-rol { background-color: var(--surface-muted); border-radius: var(--radius); padding: 24px 18px; text-align: center; display: block; transition: transform .15s ease; }
 .tarjeta-rol:hover { transform: translateY(-4px); }
 .tarjeta-rol-destacada { background-color: var(--accent); }
 .icono { display: block; font-size: 30px; margin-bottom: 10px; }
@@ -84,9 +91,18 @@ a { color: inherit; text-decoration: none; }
 .opcion-radio { display: flex; align-items: center; gap: 8px; margin-bottom: 10px; }
 .opcion-radio label { font-size: 14px; color: var(--text); }
 
+/* Vista de detalle de viaje (pasajero) */
+.detalle-fila { display: flex; justify-content: space-between; padding: 10px 0; border-bottom: 1px solid var(--border); font-size: 14px; }
+.detalle-fila span:first-child { color: var(--texto-secundario); }
+
+/* Selector de pestañas en formulario.html */
+.selector-cuenta { display: flex; background-color: var(--surface-muted); border-radius: 999px; padding: 4px; margin-bottom: 22px; }
+.selector-cuenta button { flex: 1; border: none; background-color: transparent; padding: 10px; border-radius: 999px; font-size: 14px; font-weight: bold; font-family: inherit; color: var(--texto-secundario); cursor: pointer; }
+.selector-cuenta button.activo { background-color: var(--surface); color: var(--text); }
+
 @media (max-width: 640px) {
     .grilla-opciones, .grilla-direcciones { grid-template-columns: 1fr; }
     .encabezado { padding: 14px 18px; }
-    .seccion-contenido { padding: 22px 18px; }
+    .seccion-contenido, .seccion-portada { padding: 22px 18px; }
     .fila-encabezado-seccion { flex-direction: column; align-items: flex-start; gap: 14px; }
 }

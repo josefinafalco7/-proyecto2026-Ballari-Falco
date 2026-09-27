@@ -28,35 +28,19 @@
                 <p class="texto-secundario">Administrá tus viajes como conductor</p>
             </div>
 
-            <a href="publicar-viaje.html" class="boton boton-primario">+ Publicar viaje</a>
+            <a href="publicar_viaje.html" class="boton boton-primario">+ Publicar viaje</a>
         </section>
 
         <section class="seccion-contenido">
-            <!--
-                Esta lista arranca vacía a propósito, igual que en las páginas
-                de viajes del pasajero. Más adelante, JS va a leer los viajes
-                guardados (localStorage) por este mismo conductor y va a
-                generar un <li> por cada uno acá adentro:
-
-                <li>
-                    <fieldset class="recuadro-viaje">
-                        <legend>Hora de salida</legend>
-                        <p>Dirección (UCC &rarr; Nueva Córdoba, etc.)</p>
-                        <p>Asientos disponibles · Precio</p>
-                        <a href="detalle-viaje.html?id=X&modo=conductor" class="boton boton-secundario">Editar</a>
-                        <a href="#" class="boton boton-fantasma">Cancelar viaje</a>
-                    </fieldset>
-                </li>
-            -->
+            
             <ul class="listado-viajes" id="lista-mis-viajes">
             </ul>
 
-            <!-- Estado vacío: hoy siempre se ve así, porque todavía no hay forma de guardar viajes -->
             <div class="estado-vacio" id="sin-viajes-publicados">
                 <p class="icono-vacio">&#128663;</p>
                 <h2>Sin viajes publicados</h2>
                 <p class="texto-secundario">Todavía no publicaste ningún viaje</p>
-                <a href="publicar-viaje.html" class="boton boton-primario">Publicar mi primer viaje</a>
+                <a href="publicar_viaje.html" class="boton boton-primario">Publicar mi primer viaje</a>
             </div>
         </section>
 
@@ -65,6 +49,6 @@
     <footer class="pie-de-pagina">
         <p>UCC Carpool · Universidad Católica de Córdoba · 2026</p>
     </footer>
-
+    <script src="misFunciones.js"></script>
 </body>
 </html>

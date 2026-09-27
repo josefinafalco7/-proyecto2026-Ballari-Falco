@@ -1,78 +1,87 @@
 <!DOCTYPE html>
 <html lang="es">
-    <head>
-        <meta charset="UTF-8">
-        <title>UCC Carpooling - Viajes UCC a Nueva Córdoba</title>
-        <meta content="Josefina Falco" name="author">
-        <meta content="Web para hacer carpooling a la UCC" name="descripcion">
-        <meta content="carpooling, ucc, universidad, transporte" name="palabras-principales">
-        <link rel="stylesheet" href="miestilo.css" type="text/css">
-    </head>
+
+<head>
+    <meta charset="UTF-8">
+
+    <title>UCC Carpooling - Viajes UCC a Nueva Córdoba</title>
+
+    <meta content="Josefina Falco" name="author">
+    <meta content="Web para hacer carpooling a la UCC" name="descripcion">
+    <meta content="carpooling, ucc, universidad, transporte" name="palabras-principales">
+
+    <link rel="stylesheet" href="miestilo.css" type="text/css">
+</head>
+
 <body>
 
     <header class="encabezado">
+
         <a href="index.html" class="marca">
-            <span class="marca-ucc">UCC</span> <span class="marca-carpool">Carpool</span>
+            <span class="marca-ucc">UCC</span>
+            <span class="marca-carpool">Carpool</span>
         </a>
 
         <div class="acciones-encabezado">
-            <a href="index.html" class="boton boton-fantasma">Salir</a>
+
+            <a href="index.html" class="boton boton-fantasma">
+                Salir
+            </a>
+
         </div>
+
     </header>
+
 
     <main class="contenido-principal">
 
-        <!-- Miga de pan para volver a elegir dirección -->
         <p class="migas-de-pan">
-            <a href="pasajero.html" class="enlace-migas">&larr; Cambiar dirección</a>
+
+            <a href="pasajero.html" class="enlace-migas">
+                &larr; Volver
+            </a>
+
         </p>
 
+
         <section class="seccion-contenido">
-            <h1>Viajes disponibles</h1>
 
-            <p class="etiqueta-ruta">UCC &rarr; Nueva Córdoba</p>
+            <h1>
+                UCC → Nueva Córdoba
+            </h1>
 
-            <!--
-                Acá va a ir la cantidad de viajes encontrados,
-                calculada por JS a partir de los datos guardados (localStorage).
-                Ejemplo futuro: "3 viajes encontrados"
-            -->
-            <p class="texto-secundario" id="cantidad-viajes"></p>
+            <p class="texto-secundario">
+                Viajes disponibles desde la UCC hacia Nueva Córdoba
+            </p>
 
-            <!--
-                Esta lista arranca vacía a propósito.
-                Más adelante, JS va a leer los viajes guardados por el conductor
-                (localStorage) y va a generar un <li> por cada viaje acá adentro,
-                usando la misma estructura de fieldset/legend que veníamos usando:
 
-                <li>
-                    <fieldset class="recuadro-viaje">
-                        <legend>Hora de salida</legend>
-                        <p>Nombre del conductor</p>
-                        <p>Asientos disponibles · Punto de encuentro</p>
-                        <p>Precio</p>
-                        <a href="detalle-viaje.html?id=X&modo=pasajero" class="boton boton-secundario">Ver detalle &rarr;</a>
-                    </fieldset>
-                </li>
-            -->
-            <ul class="listado-viajes" id="lista-viajes">
+            <p id="cantidad-viajes"></p>
+
+
+            <ul id="lista-viajes" class="listado-viajes">
             </ul>
 
-            <!--
-                Mensaje para cuando no haya viajes cargados todavía.
-                Por ahora queda siempre visible, porque la lista de arriba
-                siempre está vacía sin JS. Más adelante, JS lo va a ocultar
-                automáticamente si encuentra viajes guardados.
-            -->
-            <p class="mensaje-vacio" id="sin-viajes">No hay viajes disponibles en este horario todavía.</p>
+
+            <p id="sin-viajes" class="texto-secundario">
+                No hay viajes disponibles para esta dirección.
+            </p>
 
         </section>
 
     </main>
 
+
     <footer class="pie-de-pagina">
-        <p>UCC Carpool · Universidad Católica de Córdoba · 2026</p>
+
+        <p>
+            UCC Carpool · Universidad Católica de Córdoba · 2026
+        </p>
+
     </footer>
 
+
+    <script src="misFunciones.js"></script>
+
 </body>
+
 </html>

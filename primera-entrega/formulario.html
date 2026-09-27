@@ -18,85 +18,95 @@
 
     <main class="contenido-principal">
 
-        <!-- Sección: Crear cuenta -->
         <section class="seccion-contenido">
-            <h1>Crear cuenta</h1>
-            <p class="texto-secundario">Registrate para reservar viajes</p>
 
-            <form>
-                <fieldset class="grupo-formulario">
-                    <legend>Datos personales</legend>
+            <!-- Selector: alterna entre las dos vistas de abajo -->
+            <div class="selector-cuenta">
+                <button type="button" id="boton-mostrar-registro" class="activo">Registrarme</button>
+                <button type="button" id="boton-mostrar-login">Ya tengo cuenta</button>
+            </div>
 
-                    <div class="campo-formulario">
-                        <label for="registro-nombre">Nombre</label>
-                        <input type="text" id="registro-nombre" name="registro-nombre" required>
-                    </div>
+            <!-- Vista: Crear cuenta (visible por defecto) -->
+            <div id="vista-registro">
+                <h1>Crear cuenta</h1>
+                <p class="texto-secundario">Registrate para reservar viajes</p>
 
-                    <div class="campo-formulario">
-                        <label for="registro-apellido">Apellido</label>
-                        <input type="text" id="registro-apellido" name="registro-apellido" required>
-                    </div>
-                </fieldset>
+                <form>
+                    <fieldset class="grupo-formulario">
+                        <legend>Datos personales</legend>
 
-                <fieldset class="grupo-formulario">
-                    <legend>Tipo de cuenta</legend>
+                        <div class="campo-formulario">
+                            <label for="registro-nombre">Nombre</label>
+                            <input type="text" id="registro-nombre" name="registro-nombre" required>
+                        </div>
 
-                    <div class="opcion-radio">
-                        <input type="radio" id="tipo-pasajero" name="tipo-cuenta" value="pasajero" checked>
-                        <label for="tipo-pasajero">Solo Pasajero</label>
-                    </div>
+                        <div class="campo-formulario">
+                            <label for="registro-apellido">Apellido</label>
+                            <input type="text" id="registro-apellido" name="registro-apellido" required>
+                        </div>
+                    </fieldset>
 
-                    <div class="opcion-radio">
-                        <input type="radio" id="tipo-conductor" name="tipo-cuenta" value="conductor">
-                        <label for="tipo-conductor">Solo Conductor</label>
-                    </div>
+                    <fieldset class="grupo-formulario">
+                        <legend>Tipo de cuenta</legend>
 
-                    <div class="opcion-radio">
-                        <input type="radio" id="tipo-ambos" name="tipo-cuenta" value="ambos">
-                        <label for="tipo-ambos">Ambos (pasajero y conductor)</label>
-                    </div>
-                </fieldset>
+                        <div class="opcion-radio">
+                            <input type="radio" id="tipo-pasajero" name="tipo-cuenta" value="pasajero" checked>
+                            <label for="tipo-pasajero">Solo Pasajero</label>
+                        </div>
 
-                <fieldset class="grupo-formulario">
-                    <legend>Acceso</legend>
+                        <div class="opcion-radio">
+                            <input type="radio" id="tipo-conductor" name="tipo-cuenta" value="conductor">
+                            <label for="tipo-conductor">Solo Conductor</label>
+                        </div>
 
-                    <div class="campo-formulario">
-                        <label for="registro-email">Email universitario</label>
-                        <input type="email" id="registro-email" name="registro-email" placeholder="tuemail@ucc.edu.ar" required>
-                    </div>
+                        <div class="opcion-radio">
+                            <input type="radio" id="tipo-ambos" name="tipo-cuenta" value="ambos">
+                            <label for="tipo-ambos">Ambos (pasajero y conductor)</label>
+                        </div>
+                    </fieldset>
 
-                    <div class="campo-formulario">
-                        <label for="registro-password">Contraseña</label>
-                        <input type="password" id="registro-password" name="registro-password" placeholder="••••••••" required>
-                    </div>
-                </fieldset>
+                    <fieldset class="grupo-formulario">
+                        <legend>Acceso</legend>
 
-                <button type="submit" class="boton boton-primario boton-completo">Crear cuenta</button>
-            </form>
-        </section>
+                        <div class="campo-formulario">
+                            <label for="registro-email">Email universitario</label>
+                            <input type="email" id="registro-email" name="registro-email" placeholder="tuemail@ucc.edu.ar" required>
+                        </div>
 
-        <!-- Sección: Iniciar sesión -->
-        <section class="seccion-contenido">
-            <h1>Iniciar sesión</h1>
-            <p class="texto-secundario">Ingresá con tu cuenta existente</p>
+                        <div class="campo-formulario">
+                            <label for="registro-password">Contraseña</label>
+                            <input type="password" id="registro-password" name="registro-password" placeholder="••••••••" required>
+                        </div>
+                    </fieldset>
 
-            <form>
-                <fieldset class="grupo-formulario">
-                    <legend>Acceso</legend>
+                    <button type="submit" class="boton boton-primario boton-completo">Crear cuenta</button>
+                </form>
+            </div>
 
-                    <div class="campo-formulario">
-                        <label for="login-email">Email universitario</label>
-                        <input type="email" id="login-email" name="login-email" placeholder="tuemail@ucc.edu.ar" required>
-                    </div>
+            <!-- Vista: Iniciar sesión (arranca oculta) -->
+            <div id="vista-login" style="display: none;">
+                <h1>Iniciar sesión</h1>
+                <p class="texto-secundario">Ingresá con tu cuenta existente</p>
 
-                    <div class="campo-formulario">
-                        <label for="login-password">Contraseña</label>
-                        <input type="password" id="login-password" name="login-password" placeholder="••••••••" required>
-                    </div>
-                </fieldset>
+                <form>
+                    <fieldset class="grupo-formulario">
+                        <legend>Acceso</legend>
 
-                <button type="submit" class="boton boton-primario boton-completo">Ingresar</button>
-            </form>
+                        <div class="campo-formulario">
+                            <label for="login-email">Email universitario</label>
+                            <input type="email" id="login-email" name="login-email" placeholder="tuemail@ucc.edu.ar" required>
+                        </div>
+
+                        <div class="campo-formulario">
+                            <label for="login-password">Contraseña</label>
+                            <input type="password" id="login-password" name="login-password" placeholder="••••••••" required>
+                        </div>
+                    </fieldset>
+
+                    <button type="submit" class="boton boton-primario boton-completo">Ingresar</button>
+                </form>
+            </div>
+
         </section>
 
     </main>
@@ -105,5 +115,6 @@
         <p>UCC Carpool · Universidad Católica de Córdoba · 2026</p>
     </footer>
 
+    <script src="misFunciones.js"></script>
 </body>
 </html>
