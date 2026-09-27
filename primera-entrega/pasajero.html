@@ -10,50 +10,52 @@
     </head>
 <body>
 
-    <header>
-        <a href="index.html">UCC Carpool</a>
+    <header class="encabezado">
+        <a href="index.html" class="marca">
+            <span class="marca-ucc">UCC</span> <span class="marca-carpool">Carpool</span>
+        </a>
 
-        <div>
-            <a href="index.html">Salir</a>
+        <div class="acciones-encabezado">
+            <a href="index.html" class="boton boton-fantasma">Salir</a>
         </div>
     </header>
 
-    <main>
+    <main class="contenido-principal">
 
-        <!-- Migas de pan para volver -->
-        <p>
-            <a href="index.html">&larr; Volver al inicio</a>
+        <!-- Miga de pan para volver al inicio -->
+        <p class="migas-de-pan">
+            <a href="index.html" class="enlace-migas">&larr; Volver al inicio</a>
         </p>
 
-        <section>
+        <section class="seccion-contenido">
             <h1>¿A dónde querés ir?</h1>
-            <p>Seleccioná la dirección de tu viaje</p>
+            <p class="texto-secundario">Seleccioná la dirección de tu viaje</p>
 
             <!-- Opciones de dirección -->
-            <div>
-                <fieldset>
+            <div class="grilla-direcciones">
+                <fieldset class="recuadro-direccion">
                     <legend>Desde la UCC hacia Nueva Córdoba</legend>
-                    <p>Desde el campus universitario hacia el centro</p>
-                    <a href="viajes-ucc-nc.html">Ver viajes disponibles</a>
+                    <p class="texto-secundario">Desde el campus universitario hacia el centro</p>
+                    <a href="viajes-ucc-nc.html" class="boton boton-secundario boton-completo">Ver viajes disponibles</a>
                 </fieldset>
- 
-                <fieldset>
+
+                <fieldset class="recuadro-direccion">
                     <legend>Desde Nueva Córdoba hacia la UCC</legend>
-                    <p>Desde Nueva Córdoba hacia el campus universitario</p>
-                    <a href="viajes-nc-ucc.html">Ver viajes disponibles</a>
+                    <p class="texto-secundario">Desde Nueva Córdoba hacia el campus universitario</p>
+                    <a href="viajes-nc-ucc.html" class="boton boton-secundario boton-completo">Ver viajes disponibles</a>
                 </fieldset>
             </div>
 
-            <!-- Dato fijo de distancia y tiempo -->
-            <div>
-                <p>Distancia entre puntos</p>
-                <p>10 km · aproximadamente 25 minutos en auto</p>
+            <!-- Dato fijo de distancia y tiempo, la ruta siempre es la misma -->
+            <div class="caja-distancia">
+                <p><strong>Distancia entre puntos</strong></p>
+                <p class="texto-secundario">11 km · aproximadamente 25 minutos en auto</p>
             </div>
         </section>
 
     </main>
 
-    <footer>
+    <footer class="pie-de-pagina">
         <p>UCC Carpool · Universidad Católica de Córdoba · 2026</p>
     </footer>
 
