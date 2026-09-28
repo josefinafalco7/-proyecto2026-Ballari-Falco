@@ -94,7 +94,7 @@ let agregarAlCarrito = (id) => {
  contarProductos();
 };
 
-let cargarCarrito = () => {
+let cargarCarrito = (prod = productos) => {
   let carritoList = localStorage.getItem("carrito");
   let contenido = "";
   let total = 0;
@@ -113,7 +113,7 @@ let cargarCarrito = () => {
     contenido = "<div>No hay productos en el carrito</div>";
   }else{
     carritoList = JSON.parse(carritoList);
-    listProd.forEach((num) => {
+    prod.forEach((num) => {
       const element = productos[num];
       contenido += `<div>
       <h3>${element.nombre}</h3>
@@ -215,3 +215,37 @@ let contarProductos = () => {
     }
 };
 
+let orderCatalog = () => {
+  const opt = document.getElementById("order").value;
+  let newProductos;
+
+  switch(opt){
+    case "menor":
+    newProductos = productos.sort((a, b) => a.precio - b.precio);
+    break;
+    case "mayor":
+    newProductos = productos.sort((a, b) => b.precio - a.precio);
+    break;
+    case "a-z":
+    newProductos = productos.sort((a, b) => {
+      if(a.nombre.toUpperCase() < b.nombre.toUpperCase()){
+        return -1;
+      }else{
+        return 1;
+      }
+    });
+    break;
+    case "z-a":
+    newProductos = productos.sort((a, b) => {
+      if(a.nombre.toUpperCase() > b.nombre.toUpperCase()){
+        return -1;
+      }else{
+        return 1;
+      }
+    });
+    break;
+    default:
+    newProductos = productos.sort((a, b) => a.precio - b.precio);
+  }
+  cargarCarrito(newProductos);
+};
