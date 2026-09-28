@@ -1,0 +1,262 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <title>UCC Carpooling - Detalle del viaje</title>
+
+    <meta content="Josefina Falco" name="author">
+    <meta content="Web para hacer carpooling a la UCC" name="descripcion">
+    <meta content="carpooling, ucc, universidad, transporte" name="palabras-principales">
+
+    <link rel="stylesheet" href="miestilo.css" type="text/css">
+</head>
+
+<body>
+
+    <header class="encabezado">
+
+        <a href="index.html" class="marca">
+            <span class="marca-ucc">UCC</span>
+            <span class="marca-carpool">Carpool</span>
+        </a>
+
+        <div class="acciones-encabezado">
+            <a href="index.html" class="boton boton-fantasma">
+                Salir
+            </a>
+        </div>
+
+    </header>
+
+
+    <main class="contenido-principal">
+
+        <p class="migas-de-pan">
+            <a href="javascript:history.back()" class="enlace-migas">
+                &larr; Volver
+            </a>
+        </p>
+
+
+        <section class="seccion-contenido">
+
+            <h1 id="titulo-detalle">
+                Detalle del viaje
+            </h1>
+
+            <p class="texto-secundario">
+                Consultá o modificá los datos del viaje
+            </p>
+
+
+            <!-- ============================================
+                 VISTA PASAJERO: solo lectura + botón Reservar
+                 Se muestra cuando la URL trae &modo=pasajero
+                 ============================================ -->
+            <div id="vista-pasajero">
+
+                <div class="detalle-fila">
+                    <span>Dirección</span>
+                    <span id="detalle-direccion"></span>
+                </div>
+
+                <div class="detalle-fila">
+                    <span>Conductor</span>
+                    <span id="detalle-conductor"></span>
+                </div>
+
+                <div class="detalle-fila">
+                    <span>Hora de salida</span>
+                    <span id="detalle-hora"></span>
+                </div>
+
+                <div class="detalle-fila">
+                    <span>Fecha</span>
+                    <span id="detalle-fecha"></span>
+                </div>
+
+                <div class="detalle-fila">
+                    <span>Asientos disponibles</span>
+                    <span id="detalle-asientos"></span>
+                </div>
+
+                <div class="detalle-fila">
+                    <span>Punto de encuentro</span>
+                    <span id="detalle-punto"></span>
+                </div>
+
+                <div class="detalle-fila">
+                    <span>Precio</span>
+                    <span id="detalle-precio"></span>
+                </div>
+
+                <button
+                    type="button"
+                    id="boton-reservar"
+                    class="boton boton-primario boton-completo"
+                    style="margin-top: 18px;"
+                >
+                    Reservar viaje
+                </button>
+
+            </div>
+
+
+            <!-- ============================================
+                 VISTA CONDUCTOR: formulario editable
+                 Se muestra cuando la URL trae &modo=conductor
+                 ============================================ -->
+            <div id="vista-conductor">
+
+                <form id="formulario-editar-viaje">
+
+                    <fieldset class="grupo-formulario">
+
+                        <legend>Ruta y horario</legend>
+
+
+                        <div class="campo-formulario">
+
+                            <label for="editar-direccion">
+                                Dirección
+                            </label>
+
+                            <select id="editar-direccion" required>
+
+                                <option value="ucc-nc">
+                                    UCC → Nueva Córdoba
+                                </option>
+
+                                <option value="nc-ucc">
+                                    Nueva Córdoba → UCC
+                                </option>
+
+                            </select>
+
+                        </div>
+
+
+                        <div class="campo-formulario">
+
+                            <label for="editar-hora">
+                                Hora de salida
+                            </label>
+
+                            <input
+                                type="time"
+                                id="editar-hora"
+                                required
+                            >
+
+                        </div>
+
+
+                        <div class="campo-formulario">
+
+                            <label for="editar-fecha">
+                                Fecha
+                            </label>
+
+                            <input
+                                type="date"
+                                id="editar-fecha"
+                                required
+                            >
+
+                        </div>
+
+                    </fieldset>
+
+
+                    <fieldset class="grupo-formulario">
+
+                        <legend>Asientos y precio</legend>
+
+
+                        <div class="campo-formulario">
+
+                            <label for="editar-asientos">
+                                Asientos disponibles
+                            </label>
+
+                            <input
+                                type="number"
+                                id="editar-asientos"
+                                min="1"
+                                max="4"
+                                required
+                            >
+
+                        </div>
+
+
+                        <div class="campo-formulario">
+
+                            <label for="editar-precio">
+                                Precio por asiento
+                            </label>
+
+                            <input
+                                type="number"
+                                id="editar-precio"
+                                min="0"
+                                required
+                            >
+
+                        </div>
+
+                    </fieldset>
+
+
+                    <fieldset class="grupo-formulario">
+
+                        <legend>Punto de encuentro</legend>
+
+
+                        <div class="campo-formulario">
+
+                            <label for="editar-punto-encuentro">
+                                Punto de encuentro
+                            </label>
+
+                            <input
+                                type="text"
+                                id="editar-punto-encuentro"
+                                required
+                            >
+
+                        </div>
+
+                    </fieldset>
+
+
+                    <button
+                        type="submit"
+                        class="boton boton-primario boton-completo"
+                    >
+                        Guardar cambios
+                    </button>
+
+                </form>
+
+            </div>
+
+        </section>
+
+    </main>
+
+
+    <footer class="pie-de-pagina">
+
+        <p>
+            UCC Carpool · Universidad Católica de Córdoba · 2026
+        </p>
+
+    </footer>
+
+
+    <script src="misFunciones.js"></script>
+
+</body>
+</html>

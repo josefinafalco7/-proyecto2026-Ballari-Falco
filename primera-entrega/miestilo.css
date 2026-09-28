@@ -1,3 +1,108 @@
-h1{
-    color:rgb(38, 190, 140)
+:root {
+    --bg: #001B50;
+    --bg-elevated: #062A6E;
+    --surface: #FFFFFF;
+    --surface-muted: #F3F5FA;
+    --text: #16213E;
+    --texto-secundario: #5B6B85;
+    --text-on-dark: #FFFFFF;
+    --text-on-dark-muted: #AFC0E0;
+    --accent: #F2A73B;
+    --accent-dark: #D68E22;
+    --border: #E1E5EC;
+    --border-dark: #143570;
+    --danger: #B3261E;
+    --danger-bg: #FBEAE9;
+    --success: #2A6B33;
+    --success-bg: #E7F0E8;
+    --radius: 14px;
+    --radius-sm: 8px;
+}
+* { box-sizing: border-box; }
+body { margin: 0; font-family: Arial, Helvetica, sans-serif; background-color: var(--bg); color: var(--text-on-dark); line-height: 1.5; }
+h1, h2, h3 { margin: 0 0 8px; line-height: 1.2; }
+p { margin: 0 0 10px; }
+a { color: inherit; text-decoration: none; }
+
+.encabezado { display: flex; align-items: center; justify-content: space-between; padding: 18px 32px; border-bottom: 1px solid var(--border-dark); }
+.marca { font-size: 20px; font-weight: bold; }
+.marca-ucc, .ucc { color: var(--text-on-dark); }
+.marca-carpool, .carpool { color: var(--accent); }
+.acciones-encabezado .boton { padding: 8px 18px; }
+
+.contenido-principal { max-width: 760px; margin: 0 auto; padding: 32px 20px 60px; }
+.migas-de-pan { display: flex; justify-content: space-between; margin-bottom: 22px; font-size: 14px; }
+.enlace-migas { color: var(--accent); }
+.enlace-migas:hover { text-decoration: underline; }
+
+/* seccion-contenido y seccion-portada comparten la tarjeta blanca de base */
+.seccion-contenido, .seccion-portada { background-color: var(--surface); color: var(--text); border-radius: var(--radius); padding: 28px 30px; margin-bottom: 24px; }
+
+.fila-encabezado-seccion { display: flex; align-items: center; justify-content: space-between; gap: 16px; }
+.texto-secundario { color: var(--texto-secundario); }
+.pie-de-pagina { text-align: center; padding: 24px; font-size: 13px; color: var(--text-on-dark-muted); }
+
+.boton { display: inline-block; border: none; border-radius: 999px; padding: 12px 26px; font-size: 15px; font-weight: bold; cursor: pointer; text-align: center; }
+.boton-primario { background-color: var(--accent); color: var(--text); }
+.boton-primario:hover { background-color: var(--accent-dark); }
+.boton-secundario { background-color: transparent; color: var(--text); border: 2px solid var(--bg); }
+.boton-secundario:hover { background-color: var(--surface-muted); }
+.boton-fantasma { background-color: transparent; color: var(--text-on-dark); border: 1px solid var(--text-on-dark-muted); padding: 8px 18px; font-weight: normal; }
+.boton-fantasma:hover { background-color: var(--bg-elevated); }
+.boton-completo { display: block; width: 100%; text-align: center; }
+.boton:disabled { opacity: .5; cursor: not-allowed; }
+
+/* portada y seccion-portada comparten el centrado del hero */
+.portada, .seccion-portada { text-align: center; padding: 50px 30px; }
+.etiqueta { display: inline-block; background-color: var(--surface-muted); color: var(--text); border-radius: 999px; padding: 6px 16px; font-size: 12px; font-weight: bold; letter-spacing: .04em; text-transform: uppercase; margin-bottom: 18px; }
+.titulo-portada { font-size: 36px; margin-bottom: 14px; }
+.titulo-portada em { color: var(--accent); font-style: normal; }
+.subtitulo-portada { font-size: 16px; max-width: 480px; margin-left: auto; margin-right: auto; }
+.texto-portada { color: var(--texto-secundario); max-width: 480px; margin-left: auto; margin-right: auto; font-size: 14px; }
+.grilla-opciones { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; margin-top: 30px; }
+
+/* Corregido: la tarjeta base va con fondo neutro, solo la destacada lleva el dorado */
+.tarjeta-rol { background-color: var(--surface-muted); border-radius: var(--radius); padding: 24px 18px; text-align: center; display: block; transition: transform .15s ease; }
+.tarjeta-rol:hover { transform: translateY(-4px); }
+.tarjeta-rol-destacada { background-color: var(--accent); }
+.icono { display: block; font-size: 30px; margin-bottom: 10px; }
+.titulo { display: block; font-weight: bold; margin-bottom: 4px; }
+
+.grilla-direcciones { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; margin-bottom: 24px; }
+.recuadro-direccion { border: 1px solid var(--border); border-radius: var(--radius); padding: 18px 20px; margin: 0; }
+.recuadro-direccion legend { font-weight: bold; padding: 0 6px; color: var(--text); }
+.caja-distancia { background-color: var(--surface-muted); border-radius: var(--radius-sm); padding: 14px 18px; }
+
+.listado-viajes { list-style: none; margin: 0 0 16px; padding: 0; display: flex; flex-direction: column; gap: 14px; }
+.recuadro-viaje { border: 1px solid var(--border); border-radius: var(--radius); padding: 16px 20px; margin: 0; }
+.recuadro-viaje legend { font-weight: bold; font-size: 18px; color: var(--text); padding: 0 6px; }
+.etiqueta-ruta { display: inline-block; background-color: var(--surface-muted); border-radius: 999px; padding: 6px 14px; font-weight: bold; font-size: 13px; margin-bottom: 6px; }
+.mensaje-vacio { text-align: center; color: var(--texto-secundario); padding: 30px 10px; }
+
+.estado-vacio { text-align: center; padding: 50px 20px; background-color: var(--surface-muted); border-radius: var(--radius); }
+.icono-vacio { font-size: 34px; margin-bottom: 10px; }
+
+.grupo-formulario { border: 1px solid var(--border); border-radius: var(--radius); padding: 18px 20px; margin: 0 0 18px; }
+.grupo-formulario legend { font-weight: bold; color: var(--accent-dark); padding: 0 6px; }
+.campo-formulario { margin-bottom: 14px; }
+.campo-formulario label { display: block; font-size: 13px; font-weight: bold; margin-bottom: 6px; color: var(--texto-secundario); }
+.campo-formulario input, .campo-formulario select { width: 100%; padding: 10px 12px; border: 1px solid var(--border); border-radius: var(--radius-sm); font-size: 14px; font-family: inherit; color: var(--text); }
+.campo-formulario input:focus, .campo-formulario select:focus { outline: 2px solid var(--accent); border-color: var(--accent); }
+.opcion-radio { display: flex; align-items: center; gap: 8px; margin-bottom: 10px; }
+.opcion-radio label { font-size: 14px; color: var(--text); }
+
+/* Vista de detalle de viaje (pasajero) */
+.detalle-fila { display: flex; justify-content: space-between; padding: 10px 0; border-bottom: 1px solid var(--border); font-size: 14px; }
+.detalle-fila span:first-child { color: var(--texto-secundario); }
+
+/* Selector de pestañas en formulario.html */
+.selector-cuenta { display: flex; background-color: var(--surface-muted); border-radius: 999px; padding: 4px; margin-bottom: 22px; }
+.selector-cuenta button { flex: 1; border: none; background-color: transparent; padding: 10px; border-radius: 999px; font-size: 14px; font-weight: bold; font-family: inherit; color: var(--texto-secundario); cursor: pointer; }
+.selector-cuenta button.activo { background-color: var(--surface); color: var(--text); }
+
+@media (max-width: 640px) {
+    .grilla-opciones, .grilla-direcciones { grid-template-columns: 1fr; }
+    .encabezado { padding: 14px 18px; }
+    .seccion-contenido, .seccion-portada { padding: 22px 18px; }
+    .fila-encabezado-seccion { flex-direction: column; align-items: flex-start; gap: 14px; }
 }

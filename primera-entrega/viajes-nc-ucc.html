@@ -10,32 +10,34 @@
     </head>
 <body>
 
-    <header>
-        <a href="index.html">UCC Carpool</a>
+    <header class="encabezado">
+        <a href="index.html" class="marca">
+            <span class="marca-ucc">UCC</span> <span class="marca-carpool">Carpool</span>
+        </a>
 
-        <div>
-            <a href="index.html">Salir</a>
+        <div class="acciones-encabezado">
+            <a href="index.html" class="boton boton-fantasma">Salir</a>
         </div>
     </header>
 
-    <main>
+    <main class="contenido-principal">
 
         <!-- Miga de pan para volver a elegir dirección -->
-        <p>
-            <a href="pasajero.html">&larr; Cambiar dirección</a>
+        <p class="migas-de-pan">
+            <a href="pasajero.html" class="enlace-migas">&larr; Cambiar dirección</a>
         </p>
 
-        <section>
+        <section class="seccion-contenido">
             <h1>Viajes disponibles</h1>
 
-            <p>Nueva Córdoba &rarr; UCC</p>
+            <p class="etiqueta-ruta">Nueva Córdoba &rarr; UCC</p>
 
             <!--
                 Acá va a ir la cantidad de viajes encontrados,
                 calculada por JS a partir de los datos guardados (localStorage).
                 Ejemplo futuro: "3 viajes encontrados"
             -->
-            <p id="cantidad-viajes"></p>
+            <p class="texto-secundario" id="cantidad-viajes"></p>
 
             <!--
                 Esta lista arranca vacía a propósito.
@@ -44,16 +46,16 @@
                 usando la misma estructura de fieldset/legend que veníamos usando:
 
                 <li>
-                    <fieldset>
+                    <fieldset class="recuadro-viaje">
                         <legend>Hora de salida</legend>
                         <p>Nombre del conductor</p>
                         <p>Asientos disponibles · Punto de encuentro</p>
                         <p>Precio</p>
-                        <a href="detalle-viaje-X.html">Ver detalle &rarr;</a>
+                        <a href="detalle-viaje.html?id=X&modo=pasajero" class="boton boton-secundario">Ver detalle &rarr;</a>
                     </fieldset>
                 </li>
             -->
-            <ul id="lista-viajes">
+            <ul class="listado-viajes" id="lista-viajes">
             </ul>
 
             <!--
@@ -62,15 +64,15 @@
                 siempre está vacía sin JS. Más adelante, JS lo va a ocultar
                 automáticamente si encuentra viajes guardados.
             -->
-            <p id="sin-viajes">No hay viajes disponibles en este horario todavía.</p>
+            <p class="mensaje-vacio" id="sin-viajes">No hay viajes disponibles en este horario todavía.</p>
 
         </section>
 
     </main>
 
-    <footer>
+    <footer class="pie-de-pagina">
         <p>UCC Carpool · Universidad Católica de Córdoba · 2026</p>
     </footer>
-
+    <script src="misFunciones.js"></script>
 </body>
 </html>
