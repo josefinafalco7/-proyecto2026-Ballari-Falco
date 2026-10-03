@@ -6,7 +6,7 @@
  * @return {Array} Lista de usuarios, o un array vacío si no hay ninguno.
  */
 const obtenerUsuarios = () => {
-    return JSON.parse(localStorage.getItem("usuarios")) || [];
+  return JSON.parse(localStorage.getItem("usuarios")) || [];
 };
 
 /**
@@ -16,7 +16,7 @@ const obtenerUsuarios = () => {
  * @return No retorna nada.
  */
 const guardarUsuarios = (usuarios) => {
-    localStorage.setItem("usuarios", JSON.stringify(usuarios));
+  localStorage.setItem("usuarios", JSON.stringify(usuarios));
 };
 
 /**
@@ -25,7 +25,7 @@ const guardarUsuarios = (usuarios) => {
  * @return {Array} Lista de viajes, o un array vacío si no hay ninguno.
  */
 const obtenerViajes = () => {
-    return JSON.parse(localStorage.getItem("viajes")) || [];
+  return JSON.parse(localStorage.getItem("viajes")) || [];
 };
 
 /**
@@ -35,7 +35,26 @@ const obtenerViajes = () => {
  * @return No retorna nada.
  */
 const guardarViajes = (viajes) => {
-    localStorage.setItem("viajes", JSON.stringify(viajes));
+  localStorage.setItem("viajes", JSON.stringify(viajes));
+};
+
+/**
+ * Lee la lista de reservas desde localStorage.
+ * @method obtenerReservas
+ * @return {Array} Lista de reservas, o un array vacío si no hay ninguna.
+ */
+const obtenerReservas = () => {
+  return JSON.parse(localStorage.getItem("reservas")) || [];
+};
+
+/**
+ * Guarda la lista completa de reservas en localStorage.
+ * @method guardarReservas
+ * @param {Array} reservas - Lista de reservas a guardar.
+ * @return No retorna nada.
+ */
+const guardarReservas = (reservas) => {
+  localStorage.setItem("reservas", JSON.stringify(reservas));
 };
 
 /**
@@ -44,8 +63,9 @@ const guardarViajes = (viajes) => {
  * @return {Object|null} El usuario logueado, o null si nadie inició sesión.
  */
 const obtenerUsuarioActual = () => {
-    return JSON.parse(localStorage.getItem("usuarioActual"));
+  return JSON.parse(localStorage.getItem("usuarioActual"));
 };
+
 // SESIÓN
 
 /**
@@ -54,8 +74,8 @@ const obtenerUsuarioActual = () => {
  * @return No retorna nada.
  */
 const cerrarSesion = () => {
-    localStorage.removeItem("usuarioActual");
-    window.location.href = "index.html";
+  localStorage.removeItem("usuarioActual");
+  window.location.href = "index.html";
 };
 
 /**
@@ -65,18 +85,17 @@ const cerrarSesion = () => {
  * @return {Object|null} El usuario logueado si existe, o null si no había sesión (y ya redirigió).
  */
 const exigirSesion = () => {
-    const usuarioActual = obtenerUsuarioActual();
-
-    if (!usuarioActual) {
-        alert("Tenés que iniciar sesión primero.");
-        window.location.href = "formulario.html";
-        return null;
-    }
-
-    return usuarioActual;
+  const usuarioActual = obtenerUsuarioActual();
+  if (!usuarioActual) {
+    alert("Tenés que iniciar sesión primero.");
+    window.location.href = "formulario.html";
+    return null;
+  }
+  return usuarioActual;
 };
 
 // VALIDACIONES
+
 /**
  * Comprueba que un texto no esté vacío ni sea solo espacios.
  * Si está mal, avisa con alert y vacía el campo.
@@ -86,14 +105,13 @@ const exigirSesion = () => {
  * @return {boolean} true si el valor es válido, false si no lo es.
  */
 const validarTextoObligatorio = (campo, nombreCampo) => {
-    if (campo.value.trim() === "") {
-        alert("El campo " + nombreCampo + " no puede quedar vacío.");
-        campo.value = "";
-        campo.focus();
-        return false;
-    }
-
-    return true;
+  if (campo.value.trim() === "") {
+    alert("El campo " + nombreCampo + " no puede quedar vacío.");
+    campo.value = "";
+    campo.focus();
+    return false;
+  }
+  return true;
 };
 
 /**
@@ -104,16 +122,14 @@ const validarTextoObligatorio = (campo, nombreCampo) => {
  * @return {boolean} true si el email es válido, false si no lo es.
  */
 const validarEmailUniversitario = (campo) => {
-    const email = campo.value.trim().toLowerCase();
-
-    if (!email.endsWith("@ucc.edu.ar")) {
-        alert("Usá tu email universitario (tiene que terminar en @ucc.edu.ar).");
-        campo.value = "";
-        campo.focus();
-        return false;
-    }
-
-    return true;
+  const email = campo.value.trim().toLowerCase();
+  if (!email.endsWith("@ucc.edu.ar")) {
+    alert("Usá tu email universitario (tiene que terminar en @ucc.edu.ar).");
+    campo.value = "";
+    campo.focus();
+    return false;
+  }
+  return true;
 };
 
 /**
@@ -124,14 +140,13 @@ const validarEmailUniversitario = (campo) => {
  * @return {boolean} true si la contraseña es válida, false si no lo es.
  */
 const validarContrasena = (campo) => {
-    if (campo.value.length < 4) {
-        alert("La contraseña tiene que tener al menos 4 caracteres.");
-        campo.value = "";
-        campo.focus();
-        return false;
-    }
-
-    return true;
+  if (campo.value.length < 4) {
+    alert("La contraseña tiene que tener al menos 4 caracteres.");
+    campo.value = "";
+    campo.focus();
+    return false;
+  }
+  return true;
 };
 
 /**
@@ -142,16 +157,14 @@ const validarContrasena = (campo) => {
  * @return {boolean} true si la fecha es hoy o futura, false si ya pasó.
  */
 const validarFechaFutura = (campo) => {
-    const hoy = new Date().toISOString().split("T")[0];
-
-    if (campo.value < hoy) {
-        alert("La fecha no puede ser anterior a hoy.");
-        campo.value = "";
-        campo.focus();
-        return false;
-    }
-
-    return true;
+  const hoy = new Date().toISOString().split("T")[0];
+  if (campo.value < hoy) {
+    alert("La fecha no puede ser anterior a hoy.");
+    campo.value = "";
+    campo.focus();
+    return false;
+  }
+  return true;
 };
 
 /**
@@ -162,16 +175,14 @@ const validarFechaFutura = (campo) => {
  * @return {boolean} true si el valor es válido, false si no lo es.
  */
 const validarAsientos = (campo) => {
-    const asientos = Number(campo.value);
-
-    if (!asientos || asientos < 1 || asientos > 4) {
-        alert("La cantidad de asientos tiene que ser entre 1 y 4.");
-        campo.value = "";
-        campo.focus();
-        return false;
-    }
-
-    return true;
+  const asientos = Number(campo.value);
+  if (!asientos || asientos < 1 || asientos > 4) {
+    alert("La cantidad de asientos tiene que ser entre 1 y 4.");
+    campo.value = "";
+    campo.focus();
+    return false;
+  }
+  return true;
 };
 
 /**
@@ -182,14 +193,13 @@ const validarAsientos = (campo) => {
  * @return {boolean} true si el valor es válido, false si no lo es.
  */
 const validarPrecio = (campo) => {
-    if (campo.value === "" || Number(campo.value) < 0) {
-        alert("El precio no puede ser negativo.");
-        campo.value = "";
-        campo.focus();
-        return false;
-    }
-
-    return true;
+  if (campo.value === "" || Number(campo.value) < 0) {
+    alert("El precio no puede ser negativo.");
+    campo.value = "";
+    campo.focus();
+    return false;
+  }
+  return true;
 };
 
 // FORMULARIO.HTML: alternar Registrarme / Ya tengo cuenta
@@ -203,22 +213,22 @@ const validarPrecio = (campo) => {
  * @return No retorna nada.
  */
 const mostrarVista = (vista) => {
-    const vistaRegistro = document.getElementById("vista-registro");
-    const vistaLogin = document.getElementById("vista-login");
-    const botonRegistro = document.getElementById("boton-mostrar-registro");
-    const botonLogin = document.getElementById("boton-mostrar-login");
+  const vistaRegistro = document.getElementById("vista-registro");
+  const vistaLogin = document.getElementById("vista-login");
+  const botonRegistro = document.getElementById("boton-mostrar-registro");
+  const botonLogin = document.getElementById("boton-mostrar-login");
 
-    if (vista === "login") {
-        vistaLogin.classList.remove("oculto");
-        vistaRegistro.classList.add("oculto");
-        botonLogin.classList.add("activo");
-        botonRegistro.classList.remove("activo");
-    } else {
-        vistaRegistro.classList.remove("oculto");
-        vistaLogin.classList.add("oculto");
-        botonRegistro.classList.add("activo");
-        botonLogin.classList.remove("activo");
-    }
+  if (vista === "login") {
+    vistaLogin.classList.remove("oculto");
+    vistaRegistro.classList.add("oculto");
+    botonLogin.classList.add("activo");
+    botonRegistro.classList.remove("activo");
+  } else {
+    vistaRegistro.classList.remove("oculto");
+    vistaLogin.classList.add("oculto");
+    botonRegistro.classList.add("activo");
+    botonLogin.classList.remove("activo");
+  }
 };
 
 // REGISTRO
@@ -231,114 +241,111 @@ const mostrarVista = (vista) => {
  * @return No retorna nada.
  */
 const registrarUsuario = (evento) => {
-    evento.preventDefault();
+  evento.preventDefault();
 
-    const campoNombre = document.getElementById("registro-nombre");
-    const campoApellido = document.getElementById("registro-apellido");
-    const campoEmail = document.getElementById("registro-email");
-    const campoPassword = document.getElementById("registro-password");
+  const campoNombre = document.getElementById("registro-nombre");
+  const campoApellido = document.getElementById("registro-apellido");
+  const campoEmail = document.getElementById("registro-email");
+  const campoPassword = document.getElementById("registro-password");
 
-    if (!validarTextoObligatorio(campoNombre, "Nombre")) return;
-    if (!validarTextoObligatorio(campoApellido, "Apellido")) return;
-    if (!validarEmailUniversitario(campoEmail)) return;
-    if (!validarContrasena(campoPassword)) return;
+  if (!validarTextoObligatorio(campoNombre, "Nombre")) return;
+  if (!validarTextoObligatorio(campoApellido, "Apellido")) return;
+  if (!validarEmailUniversitario(campoEmail)) return;
+  if (!validarContrasena(campoPassword)) return;
 
-    const tipoCuentaSeleccionada = document.querySelector('input[name="tipo-cuenta"]:checked');
+  const tipoCuentaSeleccionada = document.querySelector('input[name="tipo-cuenta"]:checked');
+  if (!tipoCuentaSeleccionada) {
+    alert("Seleccioná el tipo de cuenta.");
+    return;
+  }
 
-    if (!tipoCuentaSeleccionada) {
-        alert("Seleccioná el tipo de cuenta.");
-        return;
-    }
+  const email = campoEmail.value.trim().toLowerCase();
+  const usuarios = obtenerUsuarios();
+  const existe = usuarios.some((usuario) => usuario.email === email);
 
-    const email = campoEmail.value.trim().toLowerCase();
-    const usuarios = obtenerUsuarios();
+  if (existe) {
+    alert("Ya existe una cuenta con ese email.");
+    campoEmail.value = "";
+    campoEmail.focus();
+    return;
+  }
 
-    const existe = usuarios.some((usuario) => usuario.email === email);
+  const nuevoUsuario = {
+    id: Date.now(),
+    nombre: campoNombre.value.trim(),
+    apellido: campoApellido.value.trim(),
+    email: email,
+    password: campoPassword.value,
+    tipoCuenta: tipoCuentaSeleccionada.value
+  };
 
-    if (existe) {
-        alert("Ya existe una cuenta con ese email.");
-        campoEmail.value = "";
-        campoEmail.focus();
-        return;
-    }
+  usuarios.push(nuevoUsuario);
+  guardarUsuarios(usuarios);
 
-    const nuevoUsuario = {
-        id: Date.now(),
-        nombre: campoNombre.value.trim(),
-        apellido: campoApellido.value.trim(),
-        email: email,
-        password: campoPassword.value,
-        tipoCuenta: tipoCuentaSeleccionada.value
-    };
-
-    usuarios.push(nuevoUsuario);
-    guardarUsuarios(usuarios);
-
-    alert("Cuenta creada correctamente. Ahora podés iniciar sesión.");
-
-    document.getElementById("formulario-registro").reset();
-    mostrarVista("login");
+  alert("Cuenta creada correctamente. Ahora podés iniciar sesión.");
+  document.getElementById("formulario-registro").reset();
+  mostrarVista("login");
 };
 
 // INICIO DE SESIÓN
 
 /**
  * Valida las credenciales y, si son correctas, inicia sesión
- * y redirige según el tipo de cuenta. 
+ * y redirige según el tipo de cuenta.
  * @method iniciarSesion
  * @param {Event} evento - Evento submit del formulario.
  * @return No retorna nada.
  */
 const iniciarSesion = (evento) => {
-    evento.preventDefault();
+  evento.preventDefault();
 
-    const campoEmail = document.getElementById("login-email");
-    const campoPassword = document.getElementById("login-password");
+  const campoEmail = document.getElementById("login-email");
+  const campoPassword = document.getElementById("login-password");
 
-    if (!validarTextoObligatorio(campoEmail, "Email")) return;
-    if (!validarTextoObligatorio(campoPassword, "Contraseña")) return;
+  if (!validarTextoObligatorio(campoEmail, "Email")) return;
+  if (!validarTextoObligatorio(campoPassword, "Contraseña")) return;
 
-    const email = campoEmail.value.trim().toLowerCase();
-    const password = campoPassword.value;
+  const email = campoEmail.value.trim().toLowerCase();
+  const password = campoPassword.value;
 
-    const usuarios = obtenerUsuarios();
+  const usuarios = obtenerUsuarios();
+  const usuario = usuarios.find((u) => u.email === email && u.password === password);
 
-    const usuario = usuarios.find((u) => u.email === email && u.password === password);
+  if (!usuario) {
+    alert("Email o contraseña incorrectos.");
+    campoPassword.value = "";
+    campoPassword.focus();
+    return;
+  }
 
-    if (!usuario) {
-        alert("Email o contraseña incorrectos.");
-        campoPassword.value = "";
-        campoPassword.focus();
-        return;
-    }
+  localStorage.setItem("usuarioActual", JSON.stringify(usuario));
 
-    localStorage.setItem("usuarioActual", JSON.stringify(usuario));
-
-    if (usuario.tipoCuenta === "conductor") {
-        window.location.href = "conductor.html";
-    } else {
-        window.location.href = "pasajero.html";
-    }
+  if (usuario.tipoCuenta === "conductor") {
+    window.location.href = "conductor.html";
+  } else {
+    window.location.href = "pasajero.html";
+  }
 };
 
 // PASAJERO.HTML: mostrar u ocultar el link a "Mis viajes"
 
 /**
- * Exige sesión iniciada y muestra el link "Mis viajes" (conductor)
- * solo si el usuario tiene ese rol. Se llama en el onload de pasajero.html.
+ * Exige sesión iniciada, muestra el link "Mis viajes" (conductor)
+ * solo si el usuario tiene ese rol, y carga el panel de reservas.
+ * Se llama en el onload de pasajero.html.
  * @method prepararPaginaPasajero
  * @return No retorna nada.
  */
 const prepararPaginaPasajero = () => {
-    const usuarioActual = exigirSesion();
+  const usuarioActual = exigirSesion();
+  if (!usuarioActual) return;
 
-    if (!usuarioActual) return;
+  mostrarReservas();
 
-    const linkMisViajesConductor = document.getElementById("link-mis-viajes-conductor");
-
-    if (usuarioActual.tipoCuenta === "conductor" || usuarioActual.tipoCuenta === "ambos") {
-        linkMisViajesConductor.classList.remove("oculto");
-    }
+  const linkMisViajesConductor = document.getElementById("link-mis-viajes-conductor");
+  if (usuarioActual.tipoCuenta === "conductor" || usuarioActual.tipoCuenta === "ambos") {
+    linkMisViajesConductor.classList.remove("oculto");
+  }
 };
 
 // PUBLICAR VIAJE
@@ -350,13 +357,13 @@ const prepararPaginaPasajero = () => {
  * @return No retorna nada.
  */
 const prepararPaginaPublicar = () => {
-    const usuarioActual = exigirSesion();
-    if (!usuarioActual) return;
+  const usuarioActual = exigirSesion();
+  if (!usuarioActual) return;
 
-    if (usuarioActual.tipoCuenta !== "conductor" && usuarioActual.tipoCuenta !== "ambos") {
-        alert("Tu cuenta es de pasajero y no puede publicar viajes.");
-        window.location.href = "pasajero.html";
-    }
+  if (usuarioActual.tipoCuenta !== "conductor" && usuarioActual.tipoCuenta !== "ambos") {
+    alert("Tu cuenta es de pasajero y no puede publicar viajes.");
+    window.location.href = "pasajero.html";
+  }
 };
 
 /**
@@ -367,48 +374,48 @@ const prepararPaginaPublicar = () => {
  * @return No retorna nada.
  */
 const publicarViaje = (evento) => {
-    evento.preventDefault();
+  evento.preventDefault();
 
-    const usuarioActual = exigirSesion();
-    if (!usuarioActual) return;
+  const usuarioActual = exigirSesion();
+  if (!usuarioActual) return;
 
-    if (usuarioActual.tipoCuenta !== "conductor" && usuarioActual.tipoCuenta !== "ambos") {
-        alert("Tu cuenta es de pasajero y no puede publicar viajes.");
-        window.location.href = "pasajero.html";
-        return;
-    }
+  if (usuarioActual.tipoCuenta !== "conductor" && usuarioActual.tipoCuenta !== "ambos") {
+    alert("Tu cuenta es de pasajero y no puede publicar viajes.");
+    window.location.href = "pasajero.html";
+    return;
+  }
 
-    const campoDireccion = document.getElementById("direccion");
-    const campoHora = document.getElementById("hora");
-    const campoFecha = document.getElementById("fecha");
-    const campoAsientos = document.getElementById("asientos");
-    const campoPrecio = document.getElementById("precio");
-    const campoPunto = document.getElementById("punto-encuentro");
+  const campoDireccion = document.getElementById("direccion");
+  const campoHora = document.getElementById("hora");
+  const campoFecha = document.getElementById("fecha");
+  const campoAsientos = document.getElementById("asientos");
+  const campoPrecio = document.getElementById("precio");
+  const campoPunto = document.getElementById("punto-encuentro");
 
-    if (!validarFechaFutura(campoFecha)) return;
-    if (!validarAsientos(campoAsientos)) return;
-    if (!validarPrecio(campoPrecio)) return;
-    if (!validarTextoObligatorio(campoPunto, "Punto de encuentro")) return;
+  if (!validarFechaFutura(campoFecha)) return;
+  if (!validarAsientos(campoAsientos)) return;
+  if (!validarPrecio(campoPrecio)) return;
+  if (!validarTextoObligatorio(campoPunto, "Punto de encuentro")) return;
 
-    const viajes = obtenerViajes();
+  const viajes = obtenerViajes();
 
-    const nuevoViaje = {
-        id: Date.now(),
-        conductorId: usuarioActual.id,
-        conductorNombre: usuarioActual.nombre + " " + usuarioActual.apellido,
-        direccion: campoDireccion.value,
-        hora: campoHora.value,
-        fecha: campoFecha.value,
-        asientos: Number(campoAsientos.value),
-        precio: Number(campoPrecio.value),
-        puntoEncuentro: campoPunto.value.trim()
-    };
+  const nuevoViaje = {
+    id: Date.now(),
+    conductorId: usuarioActual.id,
+    conductorNombre: usuarioActual.nombre + " " + usuarioActual.apellido,
+    direccion: campoDireccion.value,
+    hora: campoHora.value,
+    fecha: campoFecha.value,
+    asientos: Number(campoAsientos.value),
+    precio: Number(campoPrecio.value),
+    puntoEncuentro: campoPunto.value.trim()
+  };
 
-    viajes.push(nuevoViaje);
-    guardarViajes(viajes);
+  viajes.push(nuevoViaje);
+  guardarViajes(viajes);
 
-    alert("Viaje publicado correctamente.");
-    window.location.href = "conductor.html";
+  alert("Viaje publicado correctamente.");
+  window.location.href = "conductor.html";
 };
 
 // CONDUCTOR.HTML: mostrar mis viajes publicados
@@ -421,47 +428,48 @@ const publicarViaje = (evento) => {
  * @return {HTMLLIElement} El elemento <li> ya armado.
  */
 const crearFilaViajeConductor = (viaje) => {
-    const li = document.createElement("li");
-    const fieldset = document.createElement("fieldset");
-    fieldset.className = "recuadro-viaje";
+  const li = document.createElement("li");
 
-    const legend = document.createElement("legend");
-    legend.textContent = viaje.hora + " · " + formatearFecha(viaje.fecha);
+  const fieldset = document.createElement("fieldset");
+  fieldset.className = "recuadro-viaje";
 
-    const pDireccion = document.createElement("p");
-    pDireccion.textContent = viaje.direccion === "nc-ucc" ? "Nueva Córdoba → UCC" : "UCC → Nueva Córdoba";
+  const legend = document.createElement("legend");
+  legend.textContent = viaje.hora + " · " + formatearFecha(viaje.fecha);
 
-    const pDatos = document.createElement("p");
-    pDatos.textContent = viaje.asientos + " asientos disponibles · $" + viaje.precio + " por asiento";
+  const pDireccion = document.createElement("p");
+  pDireccion.textContent = viaje.direccion === "nc-ucc" ? "Nueva Córdoba → UCC" : "UCC → Nueva Córdoba";
 
-    const pEncuentro = document.createElement("p");
-    pEncuentro.textContent = "Punto de encuentro: " + viaje.puntoEncuentro;
+  const pDatos = document.createElement("p");
+  pDatos.textContent = viaje.asientos + " asientos disponibles · $" + viaje.precio + " por asiento";
 
-    const divAcciones = document.createElement("div");
-    divAcciones.className = "acciones-viaje";
+  const pEncuentro = document.createElement("p");
+  pEncuentro.textContent = "Punto de encuentro: " + viaje.puntoEncuentro;
 
-    const botonEditar = document.createElement("a");
-    botonEditar.href = "detalle_viaje.html?id=" + viaje.id + "&modo=conductor";
-    botonEditar.className = "boton boton-secundario";
-    botonEditar.textContent = "Editar";
+  const divAcciones = document.createElement("div");
+  divAcciones.className = "acciones-viaje";
 
-    const botonCancelar = document.createElement("button");
-    botonCancelar.type = "button";
-    botonCancelar.className = "boton boton-peligro";
-    botonCancelar.textContent = "Cancelar viaje";
-    botonCancelar.onclick = () => abrirDialogCancelar(viaje.id);
+  const botonEditar = document.createElement("a");
+  botonEditar.href = "detalle_viaje.html?id=" + viaje.id + "&modo=conductor";
+  botonEditar.className = "boton boton-secundario";
+  botonEditar.textContent = "Editar";
 
-    divAcciones.appendChild(botonEditar);
-    divAcciones.appendChild(botonCancelar);
+  const botonCancelar = document.createElement("button");
+  botonCancelar.type = "button";
+  botonCancelar.className = "boton boton-peligro";
+  botonCancelar.textContent = "Cancelar viaje";
+  botonCancelar.onclick = () => abrirDialogCancelar(viaje.id);
 
-    fieldset.appendChild(legend);
-    fieldset.appendChild(pDireccion);
-    fieldset.appendChild(pDatos);
-    fieldset.appendChild(pEncuentro);
-    fieldset.appendChild(divAcciones);
-    li.appendChild(fieldset);
+  divAcciones.appendChild(botonEditar);
+  divAcciones.appendChild(botonCancelar);
 
-    return li;
+  fieldset.appendChild(legend);
+  fieldset.appendChild(pDireccion);
+  fieldset.appendChild(pDatos);
+  fieldset.appendChild(pEncuentro);
+  fieldset.appendChild(divAcciones);
+
+  li.appendChild(fieldset);
+  return li;
 };
 
 /**
@@ -471,31 +479,30 @@ const crearFilaViajeConductor = (viaje) => {
  * @return No retorna nada.
  */
 const mostrarMisViajes = () => {
-    const usuarioActual = exigirSesion();
-    if (!usuarioActual) return;
+  const usuarioActual = exigirSesion();
+  if (!usuarioActual) return;
 
-    if (usuarioActual.tipoCuenta !== "conductor" && usuarioActual.tipoCuenta !== "ambos") {
-        alert("Esta sección es solamente para conductores.");
-        window.location.href = "pasajero.html";
-        return;
-    }
+  if (usuarioActual.tipoCuenta !== "conductor" && usuarioActual.tipoCuenta !== "ambos") {
+    alert("Esta sección es solamente para conductores.");
+    window.location.href = "pasajero.html";
+    return;
+  }
 
-    const listaMisViajes = document.getElementById("lista-mis-viajes");
-    const mensajeVacio = document.getElementById("sin-viajes-publicados");
+  const listaMisViajes = document.getElementById("lista-mis-viajes");
+  const mensajeVacio = document.getElementById("sin-viajes-publicados");
 
-    const viajes = obtenerViajes();
-    const misViajes = viajes.filter((viaje) => viaje.conductorId === usuarioActual.id);
+  const viajes = obtenerViajes();
+  const misViajes = viajes.filter((viaje) => viaje.conductorId === usuarioActual.id);
 
-    if (misViajes.length === 0) {
-        mensajeVacio.classList.remove("oculto");
-        return;
-    }
+  if (misViajes.length === 0) {
+    mensajeVacio.classList.remove("oculto");
+    return;
+  }
 
-    mensajeVacio.classList.add("oculto");
-
-    misViajes.forEach((viaje) => {
-        listaMisViajes.appendChild(crearFilaViajeConductor(viaje));
-    });
+  mensajeVacio.classList.add("oculto");
+  misViajes.forEach((viaje) => {
+    listaMisViajes.appendChild(crearFilaViajeConductor(viaje));
+  });
 };
 
 // DIALOG: confirmar cancelación de un viaje
@@ -509,8 +516,8 @@ let idViajeACancelar = null;
  * @return No retorna nada.
  */
 const abrirDialogCancelar = (id) => {
-    idViajeACancelar = id;
-    document.getElementById("dialog-cancelar").showModal();
+  idViajeACancelar = id;
+  document.getElementById("dialog-cancelar").showModal();
 };
 
 /**
@@ -519,7 +526,7 @@ const abrirDialogCancelar = (id) => {
  * @return No retorna nada.
  */
 const cerrarDialogCancelar = () => {
-    document.getElementById("dialog-cancelar").close();
+  document.getElementById("dialog-cancelar").close();
 };
 
 /**
@@ -528,20 +535,22 @@ const cerrarDialogCancelar = () => {
  * @return No retorna nada.
  */
 const confirmarCancelacion = () => {
-    eliminarViaje(idViajeACancelar);
-    document.getElementById("dialog-cancelar").close();
+  eliminarViaje(idViajeACancelar);
+  document.getElementById("dialog-cancelar").close();
 };
 
 /**
- * Elimina un viaje de localStorage por su id y recarga la página.
+ * Elimina un viaje de localStorage por su id (junto con sus reservas)
+ * y recarga la página.
  * @method eliminarViaje
  * @param {number} id - Id del viaje a eliminar.
  * @return No retorna nada.
  */
 const eliminarViaje = (id) => {
-    const viajes = obtenerViajes().filter((viaje) => viaje.id !== id);
-    guardarViajes(viajes);
-    window.location.reload();
+  const viajes = obtenerViajes().filter((viaje) => viaje.id !== id);
+  guardarViajes(viajes);
+  guardarReservas(obtenerReservas().filter((reserva) => reserva.viajeId !== id));
+  window.location.reload();
 };
 
 // FORMATEAR FECHA
@@ -554,10 +563,9 @@ const eliminarViaje = (id) => {
  * @return {string} Fecha en formato DD/MM/AAAA, o cadena vacía si no hay fecha.
  */
 const formatearFecha = (fecha) => {
-    if (!fecha) return "";
-
-    const partes = fecha.split("-");
-    return partes[2] + "/" + partes[1] + "/" + partes[0];
+  if (!fecha) return "";
+  const partes = fecha.split("-");
+  return partes[2] + "/" + partes[1] + "/" + partes[0];
 };
 
 // VIAJES-UCC-NC.HTML / VIAJES-NC-UCC.HTML: listado para el pasajero
@@ -570,84 +578,85 @@ const formatearFecha = (fecha) => {
  * @return {HTMLLIElement} El elemento <li> ya armado.
  */
 const crearFilaViajeListado = (viaje) => {
-    const li = document.createElement("li");
-    const fieldset = document.createElement("fieldset");
-    fieldset.className = "recuadro-viaje";
+  const li = document.createElement("li");
 
-    const legend = document.createElement("legend");
-    legend.textContent = viaje.hora + " · " + formatearFecha(viaje.fecha);
+  const fieldset = document.createElement("fieldset");
+  fieldset.className = "recuadro-viaje";
 
-    const pConductor = document.createElement("p");
-    pConductor.textContent = "Conductor: " + viaje.conductorNombre;
+  const legend = document.createElement("legend");
+  legend.textContent = viaje.hora + " · " + formatearFecha(viaje.fecha);
 
-    const pDatos = document.createElement("p");
-    pDatos.textContent = viaje.asientos + " asientos disponibles · Punto de encuentro: " + viaje.puntoEncuentro;
+  const pConductor = document.createElement("p");
+  pConductor.textContent = "Conductor: " + viaje.conductorNombre;
 
-    const pPrecio = document.createElement("p");
-    pPrecio.textContent = "Precio: $" + viaje.precio + " por asiento";
+  const pDatos = document.createElement("p");
+  pDatos.textContent = viaje.asientos + " asientos disponibles · Punto de encuentro: " + viaje.puntoEncuentro;
 
-    const botonDetalle = document.createElement("a");
-    botonDetalle.href = "detalle_viaje.html?id=" + viaje.id + "&modo=pasajero";
-    botonDetalle.className = "boton boton-secundario";
-    botonDetalle.textContent = "Ver detalle →";
+  const pPrecio = document.createElement("p");
+  pPrecio.textContent = "Precio: $" + viaje.precio + " por asiento";
 
-    fieldset.appendChild(legend);
-    fieldset.appendChild(pConductor);
-    fieldset.appendChild(pDatos);
-    fieldset.appendChild(pPrecio);
-    fieldset.appendChild(botonDetalle);
-    li.appendChild(fieldset);
+  const botonDetalle = document.createElement("a");
+  botonDetalle.href = "detalle_viaje.html?id=" + viaje.id + "&modo=pasajero";
+  botonDetalle.className = "boton boton-secundario";
+  botonDetalle.textContent = "Ver detalle →";
 
-    return li;
+  fieldset.appendChild(legend);
+  fieldset.appendChild(pConductor);
+  fieldset.appendChild(pDatos);
+  fieldset.appendChild(pPrecio);
+  fieldset.appendChild(botonDetalle);
+
+  li.appendChild(fieldset);
+  return li;
 };
 
 /**
  * Carga y muestra los viajes disponibles para el pasajero: filtra por
  * dirección (según el nombre del archivo), que tengan asientos libres,
  * que no hayan pasado, y que no los haya publicado el propio usuario.
- * También calcula el total de asientos disponibles entre todos los viajes.
+ * También calcula el total de asientos disponibles entre todos los viajes
+ * y carga el panel de reservas.
  * Exige sesión iniciada. Se llama en el onload de los listados.
  * @method mostrarViajesPasajero
  * @return No retorna nada.
  */
 const mostrarViajesPasajero = () => {
-    const usuarioActual = exigirSesion();
-    if (!usuarioActual) return;
+  const usuarioActual = exigirSesion();
+  if (!usuarioActual) return;
 
-    const listaViajes = document.getElementById("lista-viajes");
-    const cantidadViajes = document.getElementById("cantidad-viajes");
-    const totalAsientos = document.getElementById("total-asientos");
-    const mensajeVacio = document.getElementById("sin-viajes");
+  mostrarReservas();
 
-    const viajes = obtenerViajes();
+  const listaViajes = document.getElementById("lista-viajes");
+  const cantidadViajes = document.getElementById("cantidad-viajes");
+  const totalAsientos = document.getElementById("total-asientos");
+  const mensajeVacio = document.getElementById("sin-viajes");
 
-    const esNcUcc = window.location.pathname.includes("viajes-nc-ucc");
-    const direccionBuscada = esNcUcc ? "nc-ucc" : "ucc-nc";
+  const viajes = obtenerViajes();
+  const esNcUcc = window.location.pathname.includes("viajes-nc-ucc");
+  const direccionBuscada = esNcUcc ? "nc-ucc" : "ucc-nc";
+  const hoy = new Date().toISOString().split("T")[0];
 
-    const hoy = new Date().toISOString().split("T")[0];
+  const viajesDisponibles = viajes.filter((viaje) => {
+    return viaje.direccion === direccionBuscada &&
+      viaje.asientos > 0 &&
+      viaje.fecha >= hoy &&
+      viaje.conductorId !== usuarioActual.id;
+  });
 
-    const viajesDisponibles = viajes.filter((viaje) => {
-        return viaje.direccion === direccionBuscada &&
-               viaje.asientos > 0 &&
-               viaje.fecha >= hoy &&
-               viaje.conductorId !== usuarioActual.id;
-    });
+  cantidadViajes.textContent = viajesDisponibles.length + (viajesDisponibles.length === 1 ? " viaje encontrado" : " viajes encontrados");
 
-    cantidadViajes.textContent = viajesDisponibles.length + (viajesDisponibles.length === 1 ? " viaje encontrado" : " viajes encontrados");
+  const sumaAsientos = viajesDisponibles.reduce((total, viaje) => total + viaje.asientos, 0);
+  totalAsientos.textContent = sumaAsientos + (sumaAsientos === 1 ? " asiento libre en total" : " asientos libres en total");
 
-    const sumaAsientos = viajesDisponibles.reduce((total, viaje) => total + viaje.asientos, 0);
-    totalAsientos.textContent = sumaAsientos + (sumaAsientos === 1 ? " asiento libre en total" : " asientos libres en total");
+  if (viajesDisponibles.length === 0) {
+    mensajeVacio.classList.remove("oculto");
+    return;
+  }
 
-    if (viajesDisponibles.length === 0) {
-        mensajeVacio.classList.remove("oculto");
-        return;
-    }
-
-    mensajeVacio.classList.add("oculto");
-
-    viajesDisponibles.forEach((viaje) => {
-        listaViajes.appendChild(crearFilaViajeListado(viaje));
-    });
+  mensajeVacio.classList.add("oculto");
+  viajesDisponibles.forEach((viaje) => {
+    listaViajes.appendChild(crearFilaViajeListado(viaje));
+  });
 };
 
 // DETALLE_VIAJE.HTML: ver (pasajero) o editar (conductor)
@@ -662,84 +671,210 @@ const mostrarViajesPasajero = () => {
  * @return No retorna nada.
  */
 const cargarDetalleViaje = () => {
-    const usuarioActual = exigirSesion();
-    if (!usuarioActual) return;
+  const usuarioActual = exigirSesion();
+  if (!usuarioActual) return;
 
-    const parametros = new URLSearchParams(window.location.search);
-    const idViaje = Number(parametros.get("id"));
-    const modo = parametros.get("modo") || "pasajero";
+  const parametros = new URLSearchParams(window.location.search);
+  const idViaje = Number(parametros.get("id"));
+  const modo = parametros.get("modo") || "pasajero";
 
-    const viajes = obtenerViajes();
-    const viaje = viajes.find((v) => v.id === idViaje);
+  const viajes = obtenerViajes();
+  const viaje = viajes.find((v) => v.id === idViaje);
 
-    const vistaPasajero = document.getElementById("vista-pasajero");
-    const vistaConductor = document.getElementById("vista-conductor");
+  const vistaPasajero = document.getElementById("vista-pasajero");
+  const vistaConductor = document.getElementById("vista-conductor");
 
-    if (!viaje) {
-        document.getElementById("titulo-detalle").textContent = "Viaje no encontrado";
-        vistaPasajero.classList.add("oculto");
-        vistaConductor.classList.add("oculto");
-        return;
-    }
-
-    if (modo === "conductor") {
-        if (viaje.conductorId !== usuarioActual.id) {
-            alert("No podés editar un viaje que no publicaste vos.");
-            window.location.href = "conductor.html";
-            return;
-        }
-
-        vistaPasajero.classList.add("oculto");
-
-        document.getElementById("editar-direccion").value = viaje.direccion;
-        document.getElementById("editar-hora").value = viaje.hora;
-        document.getElementById("editar-fecha").value = viaje.fecha;
-        document.getElementById("editar-asientos").value = viaje.asientos;
-        document.getElementById("editar-precio").value = viaje.precio;
-        document.getElementById("editar-punto-encuentro").value = viaje.puntoEncuentro;
-
-        return;
-    }
-
+  if (!viaje) {
+    document.getElementById("titulo-detalle").textContent = "Viaje no encontrado";
+    vistaPasajero.classList.add("oculto");
     vistaConductor.classList.add("oculto");
+    return;
+  }
 
-    document.getElementById("titulo-detalle").textContent = viaje.direccion === "nc-ucc" ? "Nueva Córdoba → UCC" : "UCC → Nueva Córdoba";
-    document.getElementById("detalle-direccion").textContent = viaje.direccion === "nc-ucc" ? "Nueva Córdoba → UCC" : "UCC → Nueva Córdoba";
-    document.getElementById("detalle-conductor").textContent = viaje.conductorNombre;
-    document.getElementById("detalle-hora").textContent = viaje.hora;
-    document.getElementById("detalle-fecha").textContent = formatearFecha(viaje.fecha);
-    document.getElementById("detalle-asientos").textContent = viaje.asientos;
-    document.getElementById("detalle-punto").textContent = viaje.puntoEncuentro;
-    document.getElementById("detalle-precio").textContent = "$" + viaje.precio;
-
-    const botonReservar = document.getElementById("boton-reservar");
-
-    if (viaje.asientos < 1) {
-        botonReservar.disabled = true;
-        botonReservar.textContent = "Sin asientos disponibles";
+  if (modo === "conductor") {
+    if (viaje.conductorId !== usuarioActual.id) {
+      alert("No podés editar un viaje que no publicaste vos.");
+      window.location.href = "conductor.html";
+      return;
     }
+    vistaPasajero.classList.add("oculto");
+    document.getElementById("editar-direccion").value = viaje.direccion;
+    document.getElementById("editar-hora").value = viaje.hora;
+    document.getElementById("editar-fecha").value = viaje.fecha;
+    document.getElementById("editar-asientos").value = viaje.asientos;
+    document.getElementById("editar-precio").value = viaje.precio;
+    document.getElementById("editar-punto-encuentro").value = viaje.puntoEncuentro;
+    return;
+  }
+
+  vistaConductor.classList.add("oculto");
+  document.getElementById("titulo-detalle").textContent = viaje.direccion === "nc-ucc" ? "Nueva Córdoba → UCC" : "UCC → Nueva Córdoba";
+  document.getElementById("detalle-direccion").textContent = viaje.direccion === "nc-ucc" ? "Nueva Córdoba → UCC" : "UCC → Nueva Córdoba";
+  document.getElementById("detalle-conductor").textContent = viaje.conductorNombre;
+  document.getElementById("detalle-hora").textContent = viaje.hora;
+  document.getElementById("detalle-fecha").textContent = formatearFecha(viaje.fecha);
+  document.getElementById("detalle-asientos").textContent = viaje.asientos;
+  document.getElementById("detalle-punto").textContent = viaje.puntoEncuentro;
+  document.getElementById("detalle-precio").textContent = "$" + viaje.precio;
+
+  const botonReservar = document.getElementById("boton-reservar");
+  const yaReservado = obtenerReservas().some((r) => r.viajeId === viaje.id && r.pasajeroId === usuarioActual.id);
+  if (yaReservado) {
+    botonReservar.disabled = true;
+    botonReservar.textContent = "Ya reservaste este viaje";
+  } else if (viaje.asientos < 1) {
+    botonReservar.disabled = true;
+    botonReservar.textContent = "Sin asientos disponibles";
+  }
 };
 
 /**
- * Reserva el viaje que se está mostrando: resta un asiento y vuelve
- * a la lista del pasajero. Se llama desde el onclick del botón Reservar.
+ * Reserva el viaje que se está mostrando: resta un asiento, guarda la
+ * reserva del pasajero y vuelve a la página del pasajero. No permite
+ * reservar dos veces el mismo viaje.
+ * Se llama desde el onclick del botón Reservar.
  * @method reservarViaje
  * @return No retorna nada.
  */
 const reservarViaje = () => {
-    const parametros = new URLSearchParams(window.location.search);
-    const idViaje = Number(parametros.get("id"));
+  const usuarioActual = exigirSesion();
+  if (!usuarioActual) return;
 
-    const viajes = obtenerViajes();
-    const viaje = viajes.find((v) => v.id === idViaje);
+  const parametros = new URLSearchParams(window.location.search);
+  const idViaje = Number(parametros.get("id"));
+  const viajes = obtenerViajes();
+  const viaje = viajes.find((v) => v.id === idViaje);
 
-    if (!viaje || viaje.asientos < 1) return;
+  if (!viaje || viaje.asientos < 1) return;
 
-    viaje.asientos = viaje.asientos - 1;
+  const reservas = obtenerReservas();
+  const yaReservado = reservas.some((r) => r.viajeId === idViaje && r.pasajeroId === usuarioActual.id);
+  if (yaReservado) {
+    alert("Ya reservaste este viaje.");
+    return;
+  }
+
+  viaje.asientos = viaje.asientos - 1;
+  guardarViajes(viajes);
+
+  reservas.push({
+    id: Date.now(),
+    viajeId: idViaje,
+    pasajeroId: usuarioActual.id
+  });
+  guardarReservas(reservas);
+
+  alert("¡Viaje reservado!");
+  window.location.href = "pasajero.html";
+};
+
+// PANEL LATERAL: MIS RESERVAS (pasajero)
+
+/**
+ * Crea el <li> de una reserva, con los datos del viaje y un botón para cancelarla.
+ * @method crearFilaReserva
+ * @param {Object} reserva - La reserva del pasajero.
+ * @param {Object} viaje - El viaje reservado.
+ * @return {HTMLLIElement} El elemento <li> ya armado.
+ */
+const crearFilaReserva = (reserva, viaje) => {
+  const li = document.createElement("li");
+  li.className = "item-reserva";
+
+  const pRuta = document.createElement("p");
+  pRuta.className = "reserva-ruta";
+  pRuta.textContent = viaje.direccion === "nc-ucc" ? "Nueva Córdoba → UCC" : "UCC → Nueva Córdoba";
+
+  const pFecha = document.createElement("p");
+  pFecha.textContent = formatearFecha(viaje.fecha) + " · " + viaje.hora;
+
+  const pConductor = document.createElement("p");
+  pConductor.className = "texto-secundario";
+  pConductor.textContent = "Conductor: " + viaje.conductorNombre;
+
+  const pPrecio = document.createElement("p");
+  pPrecio.textContent = "$" + viaje.precio;
+
+  const botonCancelar = document.createElement("button");
+  botonCancelar.type = "button";
+  botonCancelar.className = "boton boton-peligro boton-chico";
+  botonCancelar.textContent = "Cancelar reserva";
+  botonCancelar.onclick = () => cancelarReserva(reserva.id);
+
+  li.appendChild(pRuta);
+  li.appendChild(pFecha);
+  li.appendChild(pConductor);
+  li.appendChild(pPrecio);
+  li.appendChild(botonCancelar);
+  return li;
+};
+
+/**
+ * Muestra en el panel lateral las reservas del pasajero logueado,
+ * con la cantidad de viajes y el total a pagar. Ignora reservas cuyo
+ * viaje ya no existe. Si la página no tiene el panel, no hace nada.
+ * @method mostrarReservas
+ * @return No retorna nada.
+ */
+const mostrarReservas = () => {
+  const lista = document.getElementById("lista-reservas");
+  if (!lista) return;
+
+  const usuarioActual = obtenerUsuarioActual();
+  if (!usuarioActual) return;
+
+  const cantidad = document.getElementById("cantidad-reservas");
+  const total = document.getElementById("total-reservas");
+  const mensajeVacio = document.getElementById("sin-reservas");
+
+  const viajes = obtenerViajes();
+  const misReservas = obtenerReservas().filter((r) => r.pasajeroId === usuarioActual.id);
+
+  lista.textContent = "";
+  let totalPagar = 0;
+  let cantidadMostrada = 0;
+
+  misReservas.forEach((reserva) => {
+    const viaje = viajes.find((v) => v.id === reserva.viajeId);
+    if (!viaje) return;
+    lista.appendChild(crearFilaReserva(reserva, viaje));
+    totalPagar += viaje.precio;
+    cantidadMostrada++;
+  });
+
+  cantidad.textContent = cantidadMostrada + (cantidadMostrada === 1 ? " viaje reservado" : " viajes reservados");
+  total.textContent = "Total: $" + totalPagar;
+
+  if (cantidadMostrada === 0) {
+    mensajeVacio.classList.remove("oculto");
+    total.classList.add("oculto");
+  } else {
+    mensajeVacio.classList.add("oculto");
+    total.classList.remove("oculto");
+  }
+};
+
+/**
+ * Cancela una reserva: la elimina, devuelve el asiento al viaje
+ * y recarga la página para actualizar listados y panel.
+ * @method cancelarReserva
+ * @param {number} idReserva - Id de la reserva a cancelar.
+ * @return No retorna nada.
+ */
+const cancelarReserva = (idReserva) => {
+  const reservas = obtenerReservas();
+  const reserva = reservas.find((r) => r.id === idReserva);
+  if (!reserva) return;
+
+  const viajes = obtenerViajes();
+  const viaje = viajes.find((v) => v.id === reserva.viajeId);
+  if (viaje) {
+    viaje.asientos = viaje.asientos + 1;
     guardarViajes(viajes);
+  }
 
-    alert("¡Viaje reservado!");
-    window.location.href = "pasajero.html";
+  guardarReservas(reservas.filter((r) => r.id !== idReserva));
+  window.location.reload();
 };
 
 /**
@@ -750,35 +885,34 @@ const reservarViaje = () => {
  * @return No retorna nada.
  */
 const guardarEdicionViaje = (evento) => {
-    evento.preventDefault();
+  evento.preventDefault();
 
-    const campoFecha = document.getElementById("editar-fecha");
-    const campoAsientos = document.getElementById("editar-asientos");
-    const campoPrecio = document.getElementById("editar-precio");
-    const campoPunto = document.getElementById("editar-punto-encuentro");
+  const campoFecha = document.getElementById("editar-fecha");
+  const campoAsientos = document.getElementById("editar-asientos");
+  const campoPrecio = document.getElementById("editar-precio");
+  const campoPunto = document.getElementById("editar-punto-encuentro");
 
-    if (!validarFechaFutura(campoFecha)) return;
-    if (!validarAsientos(campoAsientos)) return;
-    if (!validarPrecio(campoPrecio)) return;
-    if (!validarTextoObligatorio(campoPunto, "Punto de encuentro")) return;
+  if (!validarFechaFutura(campoFecha)) return;
+  if (!validarAsientos(campoAsientos)) return;
+  if (!validarPrecio(campoPrecio)) return;
+  if (!validarTextoObligatorio(campoPunto, "Punto de encuentro")) return;
 
-    const parametros = new URLSearchParams(window.location.search);
-    const idViaje = Number(parametros.get("id"));
+  const parametros = new URLSearchParams(window.location.search);
+  const idViaje = Number(parametros.get("id"));
+  const viajes = obtenerViajes();
+  const viaje = viajes.find((v) => v.id === idViaje);
 
-    const viajes = obtenerViajes();
-    const viaje = viajes.find((v) => v.id === idViaje);
+  if (!viaje) return;
 
-    if (!viaje) return;
+  viaje.direccion = document.getElementById("editar-direccion").value;
+  viaje.hora = document.getElementById("editar-hora").value;
+  viaje.fecha = campoFecha.value;
+  viaje.asientos = Number(campoAsientos.value);
+  viaje.precio = Number(campoPrecio.value);
+  viaje.puntoEncuentro = campoPunto.value.trim();
 
-    viaje.direccion = document.getElementById("editar-direccion").value;
-    viaje.hora = document.getElementById("editar-hora").value;
-    viaje.fecha = campoFecha.value;
-    viaje.asientos = Number(campoAsientos.value);
-    viaje.precio = Number(campoPrecio.value);
-    viaje.puntoEncuentro = campoPunto.value.trim();
+  guardarViajes(viajes);
 
-    guardarViajes(viajes);
-
-    alert("Cambios guardados correctamente.");
-    window.location.href = "conductor.html";
+  alert("Cambios guardados correctamente.");
+  window.location.href = "conductor.html";
 };

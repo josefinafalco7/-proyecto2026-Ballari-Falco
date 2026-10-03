@@ -1,23 +1,24 @@
 @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@600;700&family=Inter:wght@400;500;700&display=swap');
 
 :root {
-    --bg: #001B50;
-    --bg-elevated: #062A6E;
-    --surface: #FFFFFF;
-    --surface-muted: #F3F5FA;
-    --text: #16213E;
-    --texto-secundario: #5B6B85;
-    --text-on-dark: #FFFFFF;
-    --text-on-dark-muted: #AFC0E0;
-    --accent: #F2A73B;
-    --accent-dark: #D68E22;
-    --border: #E1E5EC;
-    --border-dark: #143570;
-    --danger: #B3261E;
-    --danger-bg: #FBEAE9;
-    --radius: 14px;
-    --radius-sm: 8px;
+  --bg: #001B50;
+  --bg-elevated: #062A6E;
+  --surface: #FFFFFF;
+  --surface-muted: #F3F5FA;
+  --text: #16213E;
+  --texto-secundario: #5B6B85;
+  --text-on-dark: #FFFFFF;
+  --text-on-dark-muted: #AFC0E0;
+  --accent: #F2A73B;
+  --accent-dark: #D68E22;
+  --border: #E1E5EC;
+  --border-dark: #143570;
+  --danger: #B3261E;
+  --danger-bg: #FBEAE9;
+  --radius: 14px;
+  --radius-sm: 8px;
 }
+
 * { box-sizing: border-box; }
 body { margin: 0; font-family: "Inter", Arial, Helvetica, sans-serif; background-color: var(--bg); color: var(--text-on-dark); line-height: 1.5; }
 h1, h2, h3 { margin: 0 0 8px; line-height: 1.2; font-family: "Poppins", Arial, Helvetica, sans-serif; }
@@ -39,7 +40,6 @@ a { color: inherit; text-decoration: none; }
 .enlace-migas:hover { text-decoration: underline; }
 
 .seccion-contenido, .seccion-portada { background-color: var(--surface); color: var(--text); border-radius: var(--radius); padding: 28px 30px; margin-bottom: 24px; }
-
 .fila-encabezado-seccion { display: flex; align-items: center; justify-content: space-between; gap: 16px; }
 .texto-secundario { color: var(--texto-secundario); }
 .pie-de-pagina { text-align: center; padding: 24px; font-size: 13px; color: var(--text-on-dark-muted); }
@@ -63,8 +63,8 @@ a { color: inherit; text-decoration: none; }
 .subtitulo-portada { font-size: 16px; max-width: 480px; margin-left: auto; margin-right: auto; }
 .texto-portada { color: var(--texto-secundario); max-width: 480px; margin-left: auto; margin-right: auto; font-size: 14px; }
 .logo-portada { width: 72px; height: 72px; margin-bottom: 18px; }
-.grilla-opciones { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; margin-top: 30px; }
 
+.grilla-opciones { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; margin-top: 30px; }
 .tarjeta-rol { background-color: var(--surface-muted); border-radius: var(--radius); padding: 24px 18px; text-align: center; display: block; transition: transform .15s ease; }
 .tarjeta-rol:hover { transform: translateY(-4px); }
 .tarjeta-rol-destacada { background-color: var(--accent); }
@@ -82,7 +82,6 @@ a { color: inherit; text-decoration: none; }
 .acciones-viaje { display: flex; gap: 10px; margin-top: 10px; }
 .etiqueta-ruta { display: inline-block; background-color: var(--surface-muted); border-radius: 999px; padding: 6px 14px; font-weight: bold; font-size: 13px; margin-bottom: 6px; }
 .mensaje-vacio { text-align: center; color: var(--texto-secundario); padding: 30px 10px; }
-
 .estado-vacio { text-align: center; padding: 50px 20px; background-color: var(--surface-muted); border-radius: var(--radius); }
 .icono-vacio { font-size: 34px; margin-bottom: 10px; }
 
@@ -112,9 +111,22 @@ dialog#dialog-cancelar p { margin-bottom: 20px; }
 /* Selector por ID pedido por la consigna */
 #boton-reservar { margin-top: 18px; }
 
+/* Layout con panel lateral de reservas (pasajero) */
+.pagina-con-lateral { max-width: 1040px; display: grid; grid-template-columns: 1fr 300px; gap: 0 24px; align-items: start; }
+.pagina-con-lateral .migas-de-pan { grid-column: 1 / -1; }
+.panel-reservas { position: sticky; top: 20px; padding: 22px 20px; }
+.listado-reservas { list-style: none; margin: 0 0 12px; padding: 0; display: flex; flex-direction: column; gap: 12px; }
+.item-reserva { border: 1px solid var(--border); border-radius: var(--radius-sm); padding: 12px 14px; font-size: 14px; }
+.item-reserva p { margin: 0 0 4px; }
+.reserva-ruta { font-weight: bold; }
+.boton-chico { padding: 6px 14px; font-size: 13px; margin-top: 6px; }
+.total-reservas { font-weight: bold; font-size: 16px; border-top: 2px solid var(--border); padding-top: 10px; margin: 0; }
+
 @media (max-width: 640px) {
-    .grilla-opciones, .grilla-direcciones { grid-template-columns: 1fr; }
-    .encabezado { padding: 14px 18px; }
-    .seccion-contenido, .seccion-portada { padding: 22px 18px; }
-    .fila-encabezado-seccion { flex-direction: column; align-items: flex-start; gap: 14px; }
+  .grilla-opciones, .grilla-direcciones { grid-template-columns: 1fr; }
+  .encabezado { padding: 14px 18px; }
+  .seccion-contenido, .seccion-portada { padding: 22px 18px; }
+  .fila-encabezado-seccion { flex-direction: column; align-items: flex-start; gap: 14px; }
+  .pagina-con-lateral { grid-template-columns: 1fr; }
+  .panel-reservas { position: static; }
 }
