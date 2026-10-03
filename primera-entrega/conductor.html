@@ -3,28 +3,34 @@
     <head>
         <meta charset="UTF-8">
         <title>UCC Carpooling - Conductor</title>
-        <meta content="Josefina Falco" name="author">
-        <meta content="Web para hacer carpooling a la UCC" name="descripcion">
-        <meta content="carpooling, ucc, universidad, transporte" name="palabras-principales">
+        <meta name="author" content="Josefina Falco">
+        <meta name="description" content="Web para hacer carpooling a la UCC">
+        <meta name="keywords" content="carpooling, ucc, universidad, transporte">
+        <link rel="icon" href="imagenes/favicon.png">
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@600;700&family=Inter:wght@400;500;700&display=swap" rel="stylesheet">
         <link rel="stylesheet" href="miestilo.css" type="text/css">
     </head>
-<body>
+<body onload="mostrarMisViajes()">
 
     <header class="encabezado">
-        <a href="index.html" class="marca">
-            <span class="marca-ucc">UCC</span> <span class="marca-carpool">Carpool</span>
-        </a>
+        <h1 class="marca"><a href="index.html"><span class="marca-ucc">UCC</span> <span class="marca-carpool">Carpool</span></a></h1>
 
         <div class="acciones-encabezado">
-            <a href="index.html" class="boton boton-fantasma">Salir</a>
+            <a href="index.html" class="boton boton-fantasma" onclick="cerrarSesion(); return false;">Salir</a>
         </div>
     </header>
 
     <main class="contenido-principal">
 
+        <p class="migas-de-pan">
+            <a href="pasajero.html" class="enlace-migas">&larr; Buscar viajes como pasajero</a>
+        </p>
+
         <section class="seccion-contenido fila-encabezado-seccion">
             <div>
-                <h1>Mis viajes publicados</h1>
+                <h2>Mis viajes publicados</h2>
                 <p class="texto-secundario">Administrá tus viajes como conductor</p>
             </div>
 
@@ -32,11 +38,9 @@
         </section>
 
         <section class="seccion-contenido">
-            
-            <ul class="listado-viajes" id="lista-mis-viajes">
-            </ul>
+            <ul class="listado-viajes" id="lista-mis-viajes"></ul>
 
-            <div class="estado-vacio" id="sin-viajes-publicados">
+            <div class="estado-vacio oculto" id="sin-viajes-publicados">
                 <p class="icono-vacio">&#128663;</p>
                 <h2>Sin viajes publicados</h2>
                 <p class="texto-secundario">Todavía no publicaste ningún viaje</p>
@@ -44,11 +48,20 @@
             </div>
         </section>
 
+        <dialog id="dialog-cancelar">
+            <p>¿Seguro que querés cancelar este viaje?</p>
+            <div class="dialog-acciones">
+                <button type="button" id="dialog-cancelar-si" onclick="confirmarCancelacion()" class="boton boton-primario">Sí, cancelar</button>
+                <button type="button" id="dialog-cancelar-no" onclick="cerrarDialogCancelar()" class="boton boton-fantasma">No</button>
+            </div>
+        </dialog>
+
     </main>
 
     <footer class="pie-de-pagina">
         <p>UCC Carpool · Universidad Católica de Córdoba · 2026</p>
     </footer>
-    <script src="misFunciones.js"></script>
+
+    <script src="script.js"></script>
 </body>
 </html>

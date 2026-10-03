@@ -1,87 +1,52 @@
 <!DOCTYPE html>
 <html lang="es">
-
-<head>
-    <meta charset="UTF-8">
-
-    <title>UCC Carpooling - Viajes UCC a Nueva Córdoba</title>
-
-    <meta content="Josefina Falco" name="author">
-    <meta content="Web para hacer carpooling a la UCC" name="descripcion">
-    <meta content="carpooling, ucc, universidad, transporte" name="palabras-principales">
-
-    <link rel="stylesheet" href="miestilo.css" type="text/css">
-</head>
-
-<body>
+    <head>
+        <meta charset="UTF-8">
+        <title>UCC Carpooling - Viajes UCC a Nueva Córdoba</title>
+        <meta name="author" content="Josefina Falco">
+        <meta name="description" content="Web para hacer carpooling a la UCC">
+        <meta name="keywords" content="carpooling, ucc, universidad, transporte">
+        <link rel="icon" href="imagenes/favicon.png">
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@600;700&family=Inter:wght@400;500;700&display=swap" rel="stylesheet">
+        <link rel="stylesheet" href="miestilo.css" type="text/css">
+    </head>
+<body onload="mostrarViajesPasajero()">
 
     <header class="encabezado">
-
-        <a href="index.html" class="marca">
-            <span class="marca-ucc">UCC</span>
-            <span class="marca-carpool">Carpool</span>
-        </a>
+        <h1 class="marca"><a href="index.html"><span class="marca-ucc">UCC</span> <span class="marca-carpool">Carpool</span></a></h1>
 
         <div class="acciones-encabezado">
-
-            <a href="index.html" class="boton boton-fantasma">
-                Salir
-            </a>
-
+            <a href="index.html" class="boton boton-fantasma" onclick="cerrarSesion(); return false;">Salir</a>
         </div>
-
     </header>
-
 
     <main class="contenido-principal">
 
         <p class="migas-de-pan">
-
-            <a href="pasajero.html" class="enlace-migas">
-                &larr; Volver
-            </a>
-
+            <a href="pasajero.html" class="enlace-migas">&larr; Cambiar dirección</a>
         </p>
 
-
         <section class="seccion-contenido">
+            <h2>Viajes disponibles</h2>
 
-            <h1>
-                UCC → Nueva Córdoba
-            </h1>
+            <p class="etiqueta-ruta">UCC &rarr; Nueva Córdoba</p>
 
-            <p class="texto-secundario">
-                Viajes disponibles desde la UCC hacia Nueva Córdoba
-            </p>
+            <p class="texto-secundario" id="cantidad-viajes"></p>
+            <p class="texto-secundario" id="total-asientos"></p>
 
+            <ul class="listado-viajes" id="lista-viajes"></ul>
 
-            <p id="cantidad-viajes"></p>
-
-
-            <ul id="lista-viajes" class="listado-viajes">
-            </ul>
-
-
-            <p id="sin-viajes" class="texto-secundario">
-                No hay viajes disponibles para esta dirección.
-            </p>
-
+            <p class="mensaje-vacio oculto" id="sin-viajes">No hay viajes disponibles en este horario todavía.</p>
         </section>
 
     </main>
 
-
     <footer class="pie-de-pagina">
-
-        <p>
-            UCC Carpool · Universidad Católica de Córdoba · 2026
-        </p>
-
+        <p>UCC Carpool · Universidad Católica de Córdoba · 2026</p>
     </footer>
 
-
-    <script src="misFunciones.js"></script>
-
+    <script src="script.js"></script>
 </body>
-
 </html>

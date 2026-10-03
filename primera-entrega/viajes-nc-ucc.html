@@ -3,42 +3,42 @@
     <head>
         <meta charset="UTF-8">
         <title>UCC Carpooling - Viajes Nueva Córdoba a UCC</title>
-        <meta content="Josefina Falco" name="author">
-        <meta content="Web para hacer carpooling a la UCC" name="descripcion">
-        <meta content="carpooling, ucc, universidad, transporte" name="palabras-principales">
+        <meta name="author" content="Josefina Falco">
+        <meta name="description" content="Web para hacer carpooling a la UCC">
+        <meta name="keywords" content="carpooling, ucc, universidad, transporte">
+        <link rel="icon" href="imagenes/favicon.png">
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@600;700&family=Inter:wght@400;500;700&display=swap" rel="stylesheet">
         <link rel="stylesheet" href="miestilo.css" type="text/css">
     </head>
-<body>
+<body onload="mostrarViajesPasajero()">
 
     <header class="encabezado">
-        <a href="index.html" class="marca">
-            <span class="marca-ucc">UCC</span> <span class="marca-carpool">Carpool</span>
-        </a>
+        <h1 class="marca"><a href="index.html"><span class="marca-ucc">UCC</span> <span class="marca-carpool">Carpool</span></a></h1>
 
         <div class="acciones-encabezado">
-            <a href="index.html" class="boton boton-fantasma">Salir</a>
+            <a href="index.html" class="boton boton-fantasma" onclick="cerrarSesion(); return false;">Salir</a>
         </div>
     </header>
 
     <main class="contenido-principal">
 
-        <!-- Miga de pan para volver a elegir dirección -->
         <p class="migas-de-pan">
             <a href="pasajero.html" class="enlace-migas">&larr; Cambiar dirección</a>
         </p>
 
         <section class="seccion-contenido">
-            <h1>Viajes disponibles</h1>
+            <h2>Viajes disponibles</h2>
 
             <p class="etiqueta-ruta">Nueva Córdoba &rarr; UCC</p>
-            
+
             <p class="texto-secundario" id="cantidad-viajes"></p>
+            <p class="texto-secundario" id="total-asientos"></p>
 
-            <ul class="listado-viajes" id="lista-viajes">
-            </ul>
+            <ul class="listado-viajes" id="lista-viajes"></ul>
 
-            <p class="mensaje-vacio" id="sin-viajes">No hay viajes disponibles en este horario todavía.</p>
-
+            <p class="mensaje-vacio oculto" id="sin-viajes">No hay viajes disponibles en este horario todavía.</p>
         </section>
 
     </main>
@@ -46,6 +46,7 @@
     <footer class="pie-de-pagina">
         <p>UCC Carpool · Universidad Católica de Córdoba · 2026</p>
     </footer>
-    <script src="misFunciones.js"></script>
+
+    <script src="script.js"></script>
 </body>
 </html>
