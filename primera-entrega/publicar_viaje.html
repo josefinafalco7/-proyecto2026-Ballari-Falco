@@ -3,88 +3,92 @@
     <head>
         <meta charset="UTF-8">
         <title>UCC Carpooling - Publicar viaje</title>
-        <meta content="Josefina Falco" name="author">
-        <meta content="Web para hacer carpooling a la UCC" name="descripcion">
-        <meta content="carpooling, ucc, universidad, transporte" name="palabras-principales">
+        <meta name="author" content="Josefina Falco">
+        <meta name="description" content="Web para hacer carpooling a la UCC">
+        <meta name="keywords" content="carpooling, ucc, universidad, transporte">
+        <link rel="icon" href="imagenes/favicon.png">
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@600;700&family=Inter:wght@400;500;700&display=swap" rel="stylesheet">
         <link rel="stylesheet" href="miestilo.css" type="text/css">
     </head>
-<body>
+<body onload="prepararPaginaPublicar()">
 
-    <header>
-        <a href="index.html">UCC Carpool</a>
+    <header class="encabezado">
+        <h1 class="marca"><a href="index.html"><span class="marca-ucc">UCC</span> <span class="marca-carpool">Carpool</span></a></h1>
 
-        <div>
-            <a href="index.html">Salir</a>
+        <div class="acciones-encabezado">
+            <a href="index.html" class="boton boton-fantasma" onclick="cerrarSesion(); return false;">Salir</a>
         </div>
     </header>
 
-    <main>
+    <main class="contenido-principal">
 
-        <!-- Migas de pan: volver al listado o ir directo a Mis viajes -->
-        <p>
-            <a href="conductor.html">&larr; Volver</a>
-            <a href="conductor.html">Mis viajes &rarr;</a>
+        <p class="migas-de-pan">
+            <a href="conductor.html" class="enlace-migas">&larr; Volver</a>
+            <a href="conductor.html" class="enlace-migas">Mis viajes &rarr;</a>
         </p>
 
-        <section>
-            <h1>Publicar un viaje</h1>
-            <p>Completá los datos para que los pasajeros puedan encontrarte</p>
+        <section class="seccion-contenido">
+            <h2>Publicar un viaje</h2>
+            <p class="texto-secundario">Completá los datos para que los pasajeros puedan encontrarte</p>
 
-            <form>
-                <fieldset>
+            <form onsubmit="publicarViaje(event)">
+                <fieldset class="grupo-formulario">
                     <legend>Ruta y horario</legend>
 
-                    <div>
-                        <label for="direccion">Dirección </label>
+                    <div class="campo-formulario">
+                        <label for="direccion">Dirección *</label>
                         <select id="direccion" name="direccion" required>
                             <option value="ucc-nc">UCC &rarr; Nueva Córdoba</option>
                             <option value="nc-ucc">Nueva Córdoba &rarr; UCC</option>
                         </select>
                     </div>
 
-                    <div>
-                        <label for="hora">Hora de salida </label>
+                    <div class="campo-formulario">
+                        <label for="hora">Hora de salida *</label>
                         <input type="time" id="hora" name="hora" required>
                     </div>
 
-                    <div>
-                        <label for="fecha">Fecha </label>
+                    <div class="campo-formulario">
+                        <label for="fecha">Fecha *</label>
                         <input type="date" id="fecha" name="fecha" required>
                     </div>
                 </fieldset>
 
-                <fieldset>
+                <fieldset class="grupo-formulario">
                     <legend>Asientos y precio</legend>
 
-                    <div>
-                        <label for="asientos">Asientos disponibles </label>
-                        <input type="number" id="asientos" name="asientos" placeholder="ej: 3" min="1" max="4" required>
+                    <div class="campo-formulario">
+                        <label for="asientos">Asientos disponibles *</label>
+                        <input type="number" id="asientos" name="asientos" placeholder="Ej: 3" size="4" min="1" max="4" required>
                     </div>
 
-                    <div>
-                        <label for="precio">Precio por asiento </label>
-                        <input type="number" id="precio" name="precio" placeholder="500" min="0" required>
+                    <div class="campo-formulario">
+                        <label for="precio">Precio por asiento *</label>
+                        <input type="number" id="precio" name="precio" placeholder="1500" size="8" min="0" required>
                     </div>
                 </fieldset>
 
-                <fieldset>
+                <fieldset class="grupo-formulario">
                     <legend>Punto de encuentro</legend>
 
-                    <div>
-                        <label for="punto-encuentro">¿Dónde te encontrás con los pasajeros? </label>
-                        <input type="text" id="punto-encuentro" name="punto-encuentro" placeholder="ej: Portón principal UCC" required>
+                    <div class="campo-formulario">
+                        <label for="punto-encuentro">¿Dónde te encontrás con los pasajeros? *</label>
+                        <input type="text" id="punto-encuentro" name="punto-encuentro" placeholder="ej: Portón principal UCC" size="40" maxlength="60" required>
                     </div>
                 </fieldset>
 
-                <button type="submit">Publicar viaje</button>
+                <button type="submit" class="boton boton-primario boton-completo">Publicar viaje</button>
             </form>
         </section>
 
     </main>
 
-    <footer>
+    <footer class="pie-de-pagina">
         <p>UCC Carpool · Universidad Católica de Córdoba · 2026</p>
     </footer>
 
+    <script src="script.js"></script>
 </body>
 </html>
