@@ -437,19 +437,79 @@ const crearFilaViajeConductor = (viaje) => {
   legend.textContent = viaje.hora + " · " + formatearFecha(viaje.fecha);
 
   const pDireccion = document.createElement("p");
-  pDireccion.textContent = viaje.direccion === "nc-ucc" ? "Nueva Córdoba → UCC" : "UCC → Nueva Córdoba";
+  pDireccion.textContent =
+    viaje.direccion === "nc-ucc"
+      ? "Nueva Córdoba → UCC"
+      : "UCC → Nueva Córdoba";
 
   const pDatos = document.createElement("p");
-  pDatos.textContent = viaje.asientos + " asientos disponibles · $" + viaje.precio + " por asiento";
+  pDatos.textContent =
+    viaje.asientos +
+    " asientos disponibles · $" +
+    viaje.precio +
+    " por asiento";
 
   const pEncuentro = document.createElement("p");
-  pEncuentro.textContent = "Punto de encuentro: " + viaje.puntoEncuentro;
+  pEncuentro.textContent =
+    "Punto de encuentro: " + viaje.puntoEncuentro;
 
+
+  // PASAJEROS QUE RESERVARON
+  const reservas = obtenerReservas().filter(
+    (reserva) => reserva.viajeId === viaje.id
+  );
+
+  const usuarios = obtenerUsuarios();
+
+  const divPasajeros = document.createElement("div");
+  divPasajeros.className = "pasajeros-viaje";
+
+  const tituloPasajeros = document.createElement("p");
+  tituloPasajeros.className = "titulo-pasajeros";
+  tituloPasajeros.textContent =
+    reservas.length === 1
+      ? "Pasajero reservado:"
+      : "Pasajeros reservados:";
+
+  divPasajeros.appendChild(tituloPasajeros);
+
+  if (reservas.length === 0) {
+    const pSinPasajeros = document.createElement("p");
+    pSinPasajeros.className = "texto-secundario";
+    pSinPasajeros.textContent = "Todavía no hay pasajeros reservados.";
+    divPasajeros.appendChild(pSinPasajeros);
+  } else {
+    const listaPasajeros = document.createElement("ul");
+    listaPasajeros.className = "lista-pasajeros";
+
+    reservas.forEach((reserva) => {
+      const pasajero = usuarios.find(
+        (usuario) => usuario.id === reserva.pasajeroId
+      );
+
+      const itemPasajero = document.createElement("li");
+
+      if (pasajero) {
+        itemPasajero.textContent =
+          pasajero.nombre + " " + pasajero.apellido;
+      } else {
+        itemPasajero.textContent = "Pasajero no encontrado";
+      }
+
+      listaPasajeros.appendChild(itemPasajero);
+    });
+
+    divPasajeros.appendChild(listaPasajeros);
+  }
+
+
+  // BOTONES
   const divAcciones = document.createElement("div");
   divAcciones.className = "acciones-viaje";
 
   const botonEditar = document.createElement("a");
-  botonEditar.href = "detalle_viaje.html?id=" + viaje.id + "&modo=conductor";
+  botonEditar.href =
+    "detalle_viaje.html?id=" + viaje.id + "&modo=conductor";
   botonEditar.className = "boton boton-secundario";
   botonEditar.textContent = "Editar";
 
@@ -462,13 +522,17 @@ const crearFilaViajeConductor = (viaje) => {
   divAcciones.appendChild(botonEditar);
   divAcciones.appendChild(botonCancelar);
 
+
+  // ARMAR EL VIAJE
   fieldset.appendChild(legend);
   fieldset.appendChild(pDireccion);
   fieldset.appendChild(pDatos);
   fieldset.appendChild(pEncuentro);
+  fieldset.appendChild(divPasajeros);
   fieldset.appendChild(divAcciones);
 
   li.appendChild(fieldset);
+
   return li;
 };
 
