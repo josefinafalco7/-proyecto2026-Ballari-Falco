@@ -46,10 +46,10 @@
 - [x] La estructura del proyecto debe ser adecuada (crear una carpeta para las imágenes, otra para los sketch/mockups).
 - [ ] Identar correctamente el código
 - [ ] No debe haber errores presentes (en Webstorm _Code_ > _Inspect Code_ para verificar que no haya errores)
-- [ ] Se debe emplear favicon
+- [x] Se debe emplear favicon
 - [ ] Emplear alguna fuente de google fonts o subir al proyecto alguna fuente externa (aunque sea para un título)
 - [ ] Debe haber navegación entre todas las páginas
-- [ ] No debe haber errores de ortografía en el contenido visual
+- [x] No debe haber errores de ortografía en el contenido visual
 - [ ] "Lorem ipsum" es sólo válido para los prototipos, NO para la página
 - [ ] No debe existir código comentado
 
@@ -63,11 +63,11 @@
 - [x] Emplear `<header></header>`. En el contenido de la cabecera debe haber un título `<h1></h1>`, puede tener color de fondo, algún logotipo, etc.
 - [x] La estructura de la página debe estar definida con `<div></div>`
 - [x] Debe contener al menos 3 elementos de tipo `<input>` o `<select>` o `<button>` que le permitan al usuario ingresar valores para poder realizar un cálculo de un ejercicio o seleccionar opciones o llamar a una función.
-- [ ] Emplear el atributo **placeholder** (mínimamente en 1 input)
+- [x] Emplear el atributo **placeholder** (mínimamente en 1 input)
 - [ ] Emplear el atributo **size** para que el tamaño de los inputs sea prolijo
 - [ ] Emplear el atributo **maxlength** para que el usurario no pueda ingresar valores "muy grandes"
 - [ ] No espaciar con excesivos `<br>`. Utilizar márgenes, paddings, etc.
-- [ ] La anidación de etiquetas HTML debe ser correcta.
+- [x] La anidación de etiquetas HTML debe ser correcta.
 - [ ] No utilizar etiquetas deprecadas.
 - [ ] Todas las etiquetas que correspondan deben estar correctamente cerradas
 - [ ] Los ids de los elementos deben ser unívocos
