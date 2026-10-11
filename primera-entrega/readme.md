@@ -16,7 +16,7 @@
 
 ## Link de gh-pages
 
-La página está publicada en: [UCC Carpool en GitHub Pages](https://josefinafalco7.github.io/-proyecto2026-Ballari-Falco/)
+La página está publicada en: [UCC Carpool en GitHub Pages](https://josefinafalco7.github.io/-proyecto2026-Ballari-Falco/primera-entrega/index.html)
 
 El proyecto se trabajó en tres ramas:
 
