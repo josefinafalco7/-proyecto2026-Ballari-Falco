@@ -6,7 +6,7 @@ import eslintPluginPrettier from "eslint-plugin-prettier";
 export default [
   {
     // Directorios y archivos que se deben ignorar globalmente
-    ignores: ["dist/", "build/", "node_modules/"],
+    ignores: ["dist/", "build/", "node_modules/", "out/"],
   },
   pluginReact.configs.flat.recommended,
   {
