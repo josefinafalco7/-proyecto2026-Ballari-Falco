@@ -1,7 +1,7 @@
-import { Link, NavLink } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 
 /**
- * Encabezado del sitio: logo con el nombre (h1) y menú de navegación.
+ * Encabezado del sitio: logo con el nombre de la marca (h1).
  * @returns {JSX.Element} El encabezado.
  */
 const Header = () => (
@@ -17,12 +17,6 @@ const Header = () => (
         <span className="marca-carpool">Carpool</span>
       </Link>
     </h1>
-
-    <nav aria-label="Principal" className="menu">
-      <NavLink to="/" end className="menu-enlace">
-        Inicio
-      </NavLink>
-    </nav>
   </header>
 );
 

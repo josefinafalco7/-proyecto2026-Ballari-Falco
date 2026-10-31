@@ -1,8 +1,13 @@
 @use 'variables';
+@use 'mixins';
 
 .seccion-portada {
   text-align: center;
   padding: 50px 30px;
+
+  @include mixins.movil {
+    padding: 22px 18px;
+  }
 }
 
 .logo-portada {
@@ -40,4 +45,52 @@
   margin-left: auto;
   margin-right: auto;
   font-size: 16px;
+}
+
+.texto-portada {
+  max-width: 480px;
+  margin-left: auto;
+  margin-right: auto;
+  font-size: 14px;
+  color: variables.$color-texto-secundario;
+}
+
+.grilla-opciones {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 16px;
+  margin-top: 30px;
+
+  @include mixins.movil {
+    grid-template-columns: 1fr;
+  }
+}
+
+.tarjeta-rol {
+  display: block;
+  padding: 24px 18px;
+  border-radius: variables.$radio;
+  background-color: variables.$color-superficie-suave;
+  text-align: center;
+  transition: transform 0.15s ease;
+
+  &:hover {
+    transform: translateY(-4px);
+  }
+}
+
+.tarjeta-rol-destacada {
+  background-color: variables.$color-acento;
+}
+
+.icono {
+  display: block;
+  margin-bottom: 10px;
+  font-size: 30px;
+}
+
+.titulo {
+  display: block;
+  margin-bottom: 4px;
+  font-weight: bold;
 }

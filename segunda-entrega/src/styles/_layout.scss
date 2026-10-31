@@ -34,20 +34,6 @@
   color: variables.$color-acento;
 }
 
-.menu {
-  display: flex;
-  gap: 18px;
-}
-
-.menu-enlace {
-  color: variables.$color-texto-sobre-oscuro-suave;
-
-  &:hover,
-  &.active {
-    color: variables.$color-acento;
-  }
-}
-
 .contenido-principal {
   max-width: variables.$ancho-contenido;
   margin: 0 auto;
