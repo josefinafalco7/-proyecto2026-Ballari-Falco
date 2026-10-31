@@ -15,7 +15,7 @@
     />
     <link rel="stylesheet" href="miestilo.css" type="text/css" />
   </head>
-  <body>
+  <body onload="prepararInicio()">
     <header class="encabezado">
       <h1 class="marca">
         <a href="index.html">
@@ -28,6 +28,18 @@
           <span class="marca-carpool">Carpool</span>
         </a>
       </h1>
+
+      <div class="acciones-encabezado oculto" id="acciones-sesion">
+        <a
+          href="index.html"
+          class="boton boton-fantasma"
+          onclick="
+            cerrarSesion();
+            return false;
+          "
+          >Salir</a
+        >
+      </div>
     </header>
 
     <main class="contenido-principal">
@@ -56,12 +68,16 @@
         </p>
 
         <div class="grilla-opciones">
-          <a href="formulario.html" class="tarjeta-rol">
+          <a href="formulario.html" id="tarjeta-pasajero" class="tarjeta-rol">
             <span class="icono">&#128694;</span>
             <span class="titulo">Soy Pasajero</span>
           </a>
 
-          <a href="formulario.html" class="tarjeta-rol tarjeta-rol-destacada">
+          <a
+            href="formulario.html"
+            id="tarjeta-conductor"
+            class="tarjeta-rol tarjeta-rol-destacada"
+          >
             <span class="icono">&#128663;</span>
             <span class="titulo">Soy Conductor</span>
           </a>

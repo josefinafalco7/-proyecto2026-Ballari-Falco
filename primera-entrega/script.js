@@ -332,11 +332,50 @@ const iniciarSesion = (evento) => {
   }
 
   localStorage.setItem("usuarioActual", JSON.stringify(usuario));
+  window.location.href = obtenerPaginaInicio(usuario);
+};
 
-  if (usuario.tipoCuenta === "conductor") {
-    window.location.href = "conductor.html";
-  } else {
-    window.location.href = "pasajero.html";
+// SESIÓN YA INICIADA: INDEX.HTML Y FORMULARIO.HTML
+
+/**
+ * Devuelve la página principal que le corresponde a un usuario
+ * según su tipo de cuenta.
+ * @method obtenerPaginaInicio
+ * @param {Object} usuario - El usuario logueado.
+ * @return {string} "conductor.html" para cuentas de conductor, "pasajero.html" para el resto.
+ */
+const obtenerPaginaInicio = (usuario) => {
+  return usuario.tipoCuenta === "conductor"
+    ? "conductor.html"
+    : "pasajero.html";
+};
+
+/**
+ * Adapta la portada cuando ya hay una sesión iniciada: las tarjetas de rol
+ * llevan directo a cada panel en vez de al formulario, y se muestra el botón
+ * "Salir". Si no hay sesión, no cambia nada. Se llama en el onload de index.html.
+ * @method prepararInicio
+ * @return No retorna nada.
+ */
+const prepararInicio = () => {
+  const usuarioActual = obtenerUsuarioActual();
+  if (!usuarioActual) return;
+
+  document.getElementById("tarjeta-pasajero").href = "pasajero.html";
+  document.getElementById("tarjeta-conductor").href = "conductor.html";
+  document.getElementById("acciones-sesion").classList.remove("oculto");
+};
+
+/**
+ * Si ya hay una sesión iniciada, lleva al usuario a su página principal en
+ * lugar de mostrarle de nuevo el login. Se llama en el onload de formulario.html.
+ * @method redirigirSiHaySesion
+ * @return No retorna nada.
+ */
+const redirigirSiHaySesion = () => {
+  const usuarioActual = obtenerUsuarioActual();
+  if (usuarioActual) {
+    window.location.href = obtenerPaginaInicio(usuarioActual);
   }
 };
 
