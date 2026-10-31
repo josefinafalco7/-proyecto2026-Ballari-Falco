@@ -1,23 +1,24 @@
 {
-  "name": "primer-node",
+  "name": "ucc-carpool",
   "version": "1.0.0",
-  "description": "Segunda entrega del proyecto",
-  "keywords": [],
-  "license": "MIT",
+  "private": true,
+  "description": "Segunda entrega del proyecto UCC Carpool",
   "author": "Josefina Falco",
-  "type": "commonjs",
-  "main": "index.js",
+  "license": "MIT",
+  "type": "module",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "lint": "eslint .",
+    "format": "prettier --write ."
   },
   "devDependencies": {
-    "@eslint/js": "^10.0.1",
-    "eslint": "^10.12.0",
+    "eslint": "^9.39.5",
     "eslint-config-prettier": "^10.1.8",
-    "eslint-plugin-import": "^2.32.0",
     "eslint-plugin-prettier": "^5.5.6",
     "eslint-plugin-react": "^7.37.5",
     "globals": "^17.13.0",
     "prettier": "^3.9.9"
+  },
+  "overrides": {
+    "minimatch": "^11.0.3"
   }
 }
