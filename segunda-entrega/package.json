@@ -6,17 +6,35 @@
   "author": "Josefina Falco",
   "license": "MIT",
   "type": "module",
+  "engines": {
+    "node": ">=22.12.0"
+  },
   "scripts": {
+    "dev": "vite",
+    "build": "vite build",
+    "preview": "vite preview",
+    "mock": "json-server src/data/db.json --port 4000",
     "lint": "eslint .",
     "format": "prettier --write ."
   },
+  "dependencies": {
+    "prop-types": "^15.8.1",
+    "react": "^19.3.1",
+    "react-dom": "^19.3.1",
+    "react-router-dom": "^7.18.5"
+  },
   "devDependencies": {
+    "@vitejs/plugin-react": "^6.1.2",
     "eslint": "^9.39.5",
     "eslint-config-prettier": "^10.1.8",
     "eslint-plugin-prettier": "^5.5.6",
     "eslint-plugin-react": "^7.37.5",
+    "eslint-plugin-react-hooks": "^7.1.1",
     "globals": "^17.13.0",
-    "prettier": "^3.9.9"
+    "json-server": "1.0.0-beta.15",
+    "prettier": "^3.9.9",
+    "sass": "^1.107.1",
+    "vite": "^8.3.5"
   },
   "overrides": {
     "minimatch": "^11.0.3"
