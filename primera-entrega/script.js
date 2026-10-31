@@ -185,20 +185,33 @@ const validarAsientos = (campo) => {
   return true;
 };
 
+/** Precio máximo permitido por asiento, en pesos. */
+const PRECIO_MAXIMO = 20000;
+
 /**
- * Comprueba que el precio no sea negativo.
+ * Comprueba que el precio no sea negativo ni supere el máximo permitido.
  * Si está mal, avisa con alert y vacía el campo.
  * @method validarPrecio
  * @param {HTMLInputElement} campo - El input de precio a validar.
  * @return {boolean} true si el valor es válido, false si no lo es.
  */
 const validarPrecio = (campo) => {
-  if (campo.value === "" || Number(campo.value) < 0) {
+  const precio = Number(campo.value);
+
+  if (campo.value === "" || precio < 0) {
     alert("El precio no puede ser negativo.");
     campo.value = "";
     campo.focus();
     return false;
   }
+
+  if (precio > PRECIO_MAXIMO) {
+    alert("El precio por asiento no puede superar $" + PRECIO_MAXIMO + ".");
+    campo.value = "";
+    campo.focus();
+    return false;
+  }
+
   return true;
 };
 
