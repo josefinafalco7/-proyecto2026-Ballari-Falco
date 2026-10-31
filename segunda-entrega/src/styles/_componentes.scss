@@ -1,0 +1,80 @@
+@use 'variables';
+@use 'mixins';
+
+.boton {
+  display: inline-block;
+  border: none;
+  border-radius: 999px;
+  padding: 12px 26px;
+  font-family: inherit;
+  font-size: 15px;
+  font-weight: bold;
+  cursor: pointer;
+
+  &:disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+  }
+}
+
+.boton-primario {
+  @include mixins.boton(
+    variables.$color-acento,
+    variables.$color-texto,
+    variables.$color-acento-oscuro
+  );
+}
+
+.boton-secundario {
+  @include mixins.boton(
+    transparent,
+    variables.$color-texto,
+    variables.$color-superficie-suave
+  );
+  border: 2px solid variables.$color-fondo;
+}
+
+.boton-peligro {
+  @include mixins.boton(
+    variables.$color-peligro-fondo,
+    variables.$color-peligro,
+    variables.$color-peligro,
+    variables.$color-superficie
+  );
+  border: 1px solid variables.$color-peligro;
+}
+
+.listado-viajes {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+}
+
+.tarjeta {
+  border: 1px solid variables.$color-borde;
+  border-radius: variables.$radio;
+  padding: 16px 20px;
+}
+
+.tarjeta-titulo {
+  font-size: 18px;
+}
+
+.tarjeta-subtitulo {
+  color: variables.$color-texto-secundario;
+}
+
+.tarjeta-contenido p:last-child {
+  margin-bottom: 0;
+}
+
+.precio {
+  font-weight: bold;
+}
+
+.mensaje-error {
+  background-color: variables.$color-peligro-fondo;
+  color: variables.$color-peligro;
+  border-radius: variables.$radio-chico;
+  padding: 10px 14px;
+}

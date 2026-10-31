@@ -1,0 +1,74 @@
+@use 'variables';
+@use 'mixins';
+
+.encabezado {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 18px 32px;
+  border-bottom: 1px solid variables.$color-borde-oscuro;
+
+  @include mixins.movil {
+    padding: 14px 18px;
+  }
+}
+
+.marca {
+  margin: 0;
+  font-size: 20px;
+
+  a {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+  }
+}
+
+.logo-header {
+  width: 32px;
+  height: 32px;
+  object-fit: contain;
+}
+
+.marca-carpool {
+  color: variables.$color-acento;
+}
+
+.menu {
+  display: flex;
+  gap: 18px;
+}
+
+.menu-enlace {
+  color: variables.$color-texto-sobre-oscuro-suave;
+
+  &:hover,
+  &.active {
+    color: variables.$color-acento;
+  }
+}
+
+.contenido-principal {
+  max-width: variables.$ancho-contenido;
+  margin: 0 auto;
+  padding: 32px 20px 60px;
+}
+
+.seccion-contenido {
+  background-color: variables.$color-superficie;
+  color: variables.$color-texto;
+  border-radius: variables.$radio;
+  padding: 28px 30px;
+  margin-bottom: 24px;
+
+  @include mixins.movil {
+    padding: 22px 18px;
+  }
+}
+
+.pie-de-pagina {
+  padding: 24px;
+  text-align: center;
+  font-size: 13px;
+  color: variables.$color-texto-sobre-oscuro-suave;
+}

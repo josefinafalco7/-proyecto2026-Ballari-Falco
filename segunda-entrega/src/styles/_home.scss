@@ -1,0 +1,43 @@
+@use 'variables';
+
+.seccion-portada {
+  text-align: center;
+  padding: 50px 30px;
+}
+
+.logo-portada {
+  display: block;
+  height: 72px;
+  width: auto;
+  max-width: 100%;
+  margin: 0 auto 18px;
+}
+
+.etiqueta {
+  display: inline-block;
+  margin-bottom: 18px;
+  padding: 6px 16px;
+  border-radius: 999px;
+  background-color: variables.$color-superficie-suave;
+  font-size: 12px;
+  font-weight: bold;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+}
+
+.titulo-portada {
+  margin-bottom: 14px;
+  font-size: 36px;
+
+  em {
+    color: variables.$color-acento;
+    font-style: normal;
+  }
+}
+
+.subtitulo-portada {
+  max-width: 480px;
+  margin-left: auto;
+  margin-right: auto;
+  font-size: 16px;
+}

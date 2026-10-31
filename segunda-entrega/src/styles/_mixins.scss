@@ -1,0 +1,19 @@
+@use 'variables';
+
+// Colores de un botón y su aspecto al pasar el mouse por encima
+@mixin boton($fondo, $texto, $fondo-hover, $texto-hover: $texto) {
+  background-color: $fondo;
+  color: $texto;
+
+  &:hover:not(:disabled) {
+    background-color: $fondo-hover;
+    color: $texto-hover;
+  }
+}
+
+// Estilos que solo se aplican en pantallas chicas
+@mixin movil {
+  @media (max-width: variables.$ancho-movil) {
+    @content;
+  }
+}
