@@ -1,0 +1,63 @@
+@use 'variables';
+@use 'mixins';
+
+.boton {
+  display: inline-block;
+  border: none;
+  border-radius: 999px;
+  padding: 12px 26px;
+  font-size: 15px;
+  font-weight: bold;
+  font-family: inherit;
+  text-align: center;
+  cursor: pointer;
+}
+
+.boton-primario {
+  @include mixins.boton(
+    variables.$color-acento,
+    variables.$color-texto,
+    variables.$color-acento-oscuro
+  );
+}
+
+.boton-secundario {
+  @include mixins.boton(
+    transparent,
+    variables.$color-texto,
+    variables.$color-superficie-suave
+  );
+  border: 2px solid variables.$color-fondo;
+}
+
+.boton-fantasma {
+  @include mixins.boton(
+    transparent,
+    variables.$color-texto-sobre-oscuro,
+    variables.$color-fondo-elevado
+  );
+  border: 1px solid variables.$color-texto-sobre-oscuro-suave;
+  padding: 8px 18px;
+  font-weight: normal;
+}
+
+.boton-peligro {
+  @include mixins.boton(
+    variables.$color-peligro-fondo,
+    variables.$color-peligro,
+    variables.$color-peligro,
+    #fff
+  );
+  border: 1px solid variables.$color-peligro;
+}
+
+.boton-completo {
+  display: block;
+  width: 100%;
+  text-align: center;
+}
+
+.boton:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}

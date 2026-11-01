@@ -1,0 +1,75 @@
+{
+  "usuarios": [
+    {
+      "id": "1",
+      "nombre": "Juan",
+      "apellido": "Pérez",
+      "email": "juan@ucc.edu.ar",
+      "password": "1234",
+      "tipoCuenta": "conductor"
+    },
+    {
+      "id": "2",
+      "nombre": "Ana",
+      "apellido": "Gómez",
+      "email": "ana@ucc.edu.ar",
+      "password": "abcd",
+      "tipoCuenta": "pasajero"
+    },
+    {
+      "id": "3",
+      "nombre": "Luis",
+      "apellido": "Paz",
+      "email": "luis@ucc.edu.ar",
+      "password": "pass",
+      "tipoCuenta": "ambos"
+    }
+  ],
+  "viajes": [
+    {
+      "id": "1",
+      "conductorId": "1",
+      "conductorNombre": "Juan Pérez",
+      "direccion": "ucc-nc",
+      "fecha": "2027-03-15",
+      "hora": "09:00",
+      "asientos": 3,
+      "precio": 1500,
+      "puntoEncuentro": "Portón principal UCC"
+    },
+    {
+      "id": "2",
+      "conductorId": "1",
+      "conductorNombre": "Juan Pérez",
+      "direccion": "nc-ucc",
+      "fecha": "2027-03-15",
+      "hora": "18:30",
+      "asientos": 2,
+      "precio": 1800,
+      "puntoEncuentro": "Plaza España"
+    },
+    {
+      "id": "3",
+      "conductorId": "3",
+      "conductorNombre": "Luis Paz",
+      "direccion": "ucc-nc",
+      "fecha": "2027-03-16",
+      "hora": "12:00",
+      "asientos": 1,
+      "precio": 1200,
+      "puntoEncuentro": "Estacionamiento Facultad de Derecho"
+    },
+    {
+      "id": "4",
+      "conductorId": "3",
+      "conductorNombre": "Luis Paz",
+      "direccion": "nc-ucc",
+      "fecha": "2027-03-17",
+      "hora": "07:45",
+      "asientos": 4,
+      "precio": 1000,
+      "puntoEncuentro": "Patio Olmos"
+    }
+  ],
+  "reservas": []
+}

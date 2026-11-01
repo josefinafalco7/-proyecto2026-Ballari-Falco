@@ -1,0 +1,88 @@
+@use 'variables';
+
+.seccion-portada {
+  text-align: center;
+  padding: 50px 30px;
+}
+
+.etiqueta {
+  display: inline-block;
+  background-color: variables.$color-superficie-suave;
+  color: variables.$color-texto;
+  border-radius: 999px;
+  padding: 6px 16px;
+  font-size: 12px;
+  font-weight: bold;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  margin-bottom: 18px;
+}
+
+.titulo-portada {
+  font-size: 36px;
+  margin-bottom: 14px;
+
+  em {
+    color: variables.$color-acento;
+    font-style: normal;
+  }
+}
+
+.subtitulo-portada {
+  font-size: 16px;
+  max-width: 480px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.texto-portada {
+  color: variables.$color-texto-secundario;
+  max-width: 480px;
+  margin-left: auto;
+  margin-right: auto;
+  font-size: 14px;
+}
+
+.logo-portada {
+  display: block;
+  height: 72px;
+  width: auto;
+  max-width: 100%;
+  margin: 0 auto 18px;
+}
+
+.grilla-opciones {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 16px;
+  margin-top: 30px;
+}
+
+.tarjeta-rol {
+  background-color: variables.$color-superficie-suave;
+  border-radius: variables.$radio;
+  padding: 24px 18px;
+  text-align: center;
+  display: block;
+  transition: transform 0.15s ease;
+
+  &:hover {
+    transform: translateY(-4px);
+  }
+}
+
+.tarjeta-rol-destacada {
+  background-color: variables.$color-acento;
+}
+
+.icono {
+  display: block;
+  font-size: 30px;
+  margin-bottom: 10px;
+}
+
+.titulo {
+  display: block;
+  font-weight: bold;
+  margin-bottom: 4px;
+}

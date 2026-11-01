@@ -1,0 +1,90 @@
+@use 'variables';
+
+.grupo-formulario {
+  border: 1px solid variables.$color-borde;
+  border-radius: variables.$radio;
+  padding: 18px 20px;
+  margin: 0 0 18px;
+
+  legend {
+    font-weight: bold;
+    color: variables.$color-acento-oscuro;
+    padding: 0 6px;
+  }
+}
+
+.campo-formulario {
+  margin-bottom: 14px;
+
+  label {
+    display: block;
+    font-size: 13px;
+    font-weight: bold;
+    margin-bottom: 6px;
+    color: variables.$color-texto-secundario;
+  }
+
+  input,
+  select {
+    width: 100%;
+    padding: 10px 12px;
+    border: 1px solid variables.$color-borde;
+    border-radius: variables.$radio-chico;
+    font-size: 14px;
+    font-family: inherit;
+    color: variables.$color-texto;
+
+    &:focus {
+      outline: 2px solid variables.$color-acento;
+      border-color: variables.$color-acento;
+    }
+
+    &[aria-invalid='true'] {
+      border-color: variables.$color-peligro;
+    }
+  }
+}
+
+.error-campo {
+  margin: 6px 0 0;
+  font-size: 13px;
+  color: variables.$color-peligro;
+}
+
+.opcion-radio {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-bottom: 10px;
+
+  label {
+    font-size: 14px;
+    color: variables.$color-texto;
+  }
+}
+
+.selector-cuenta {
+  display: flex;
+  background-color: variables.$color-superficie-suave;
+  border-radius: 999px;
+  padding: 4px;
+  margin-bottom: 22px;
+
+  button {
+    flex: 1;
+    border: none;
+    background-color: transparent;
+    padding: 10px;
+    border-radius: 999px;
+    font-size: 14px;
+    font-weight: bold;
+    font-family: inherit;
+    color: variables.$color-texto-secundario;
+    cursor: pointer;
+
+    &.activo {
+      background-color: variables.$color-superficie;
+      color: variables.$color-texto;
+    }
+  }
+}
