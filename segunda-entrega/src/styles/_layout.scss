@@ -1,5 +1,4 @@
 @use 'variables';
-@use 'mixins';
 
 .encabezado {
   display: flex;
@@ -7,15 +6,12 @@
   justify-content: space-between;
   padding: 18px 32px;
   border-bottom: 1px solid variables.$color-borde-oscuro;
-
-  @include mixins.movil {
-    padding: 14px 18px;
-  }
 }
 
 .marca {
   margin: 0;
   font-size: 20px;
+  font-weight: bold;
 
   a {
     display: flex;
@@ -30,8 +26,16 @@
   object-fit: contain;
 }
 
+.marca-ucc {
+  color: variables.$color-texto-sobre-oscuro;
+}
+
 .marca-carpool {
   color: variables.$color-acento;
+}
+
+.acciones-encabezado .boton {
+  padding: 8px 18px;
 }
 
 .contenido-principal {
@@ -40,16 +44,39 @@
   padding: 32px 20px 60px;
 }
 
-.seccion-contenido {
+.migas-de-pan {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 22px;
+  font-size: 14px;
+}
+
+.enlace-migas {
+  color: variables.$color-acento;
+
+  &:hover {
+    text-decoration: underline;
+  }
+}
+
+.seccion-contenido,
+.seccion-portada {
   background-color: variables.$color-superficie;
   color: variables.$color-texto;
   border-radius: variables.$radio;
   padding: 28px 30px;
   margin-bottom: 24px;
+}
 
-  @include mixins.movil {
-    padding: 22px 18px;
-  }
+.fila-encabezado-seccion {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+}
+
+.texto-secundario {
+  color: variables.$color-texto-secundario;
 }
 
 .pie-de-pagina {

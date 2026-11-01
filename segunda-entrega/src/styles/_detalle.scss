@@ -1,0 +1,17 @@
+@use 'variables';
+
+.detalle-fila {
+  display: flex;
+  justify-content: space-between;
+  padding: 10px 0;
+  border-bottom: 1px solid variables.$color-borde;
+  font-size: 14px;
+
+  span:first-child {
+    color: variables.$color-texto-secundario;
+  }
+}
+
+#boton-reservar {
+  margin-top: 18px;
+}

@@ -1,0 +1,31 @@
+@use 'variables';
+
+dialog#dialog-cancelar {
+  border: none;
+  border-radius: variables.$radio;
+  padding: 26px;
+  max-width: 340px;
+  color: variables.$color-texto;
+
+  &::backdrop {
+    background-color: rgba(0, 0, 0, 0.5);
+  }
+
+  p {
+    margin-bottom: 20px;
+  }
+}
+
+.dialog-acciones {
+  display: flex;
+  gap: 10px;
+
+  .boton {
+    flex: 1;
+  }
+
+  .boton-fantasma {
+    color: variables.$color-texto;
+    border-color: variables.$color-borde;
+  }
+}

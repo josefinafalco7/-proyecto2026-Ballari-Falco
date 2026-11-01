@@ -5,7 +5,7 @@
   background-color: $fondo;
   color: $texto;
 
-  &:hover:not(:disabled) {
+  &:hover {
     background-color: $fondo-hover;
     color: $texto-hover;
   }

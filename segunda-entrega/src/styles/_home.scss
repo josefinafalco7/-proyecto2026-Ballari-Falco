@@ -1,13 +1,46 @@
 @use 'variables';
-@use 'mixins';
 
 .seccion-portada {
   text-align: center;
   padding: 50px 30px;
+}
 
-  @include mixins.movil {
-    padding: 22px 18px;
+.etiqueta {
+  display: inline-block;
+  background-color: variables.$color-superficie-suave;
+  color: variables.$color-texto;
+  border-radius: 999px;
+  padding: 6px 16px;
+  font-size: 12px;
+  font-weight: bold;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  margin-bottom: 18px;
+}
+
+.titulo-portada {
+  font-size: 36px;
+  margin-bottom: 14px;
+
+  em {
+    color: variables.$color-acento;
+    font-style: normal;
   }
+}
+
+.subtitulo-portada {
+  font-size: 16px;
+  max-width: 480px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.texto-portada {
+  color: variables.$color-texto-secundario;
+  max-width: 480px;
+  margin-left: auto;
+  margin-right: auto;
+  font-size: 14px;
 }
 
 .logo-portada {
@@ -18,60 +51,19 @@
   margin: 0 auto 18px;
 }
 
-.etiqueta {
-  display: inline-block;
-  margin-bottom: 18px;
-  padding: 6px 16px;
-  border-radius: 999px;
-  background-color: variables.$color-superficie-suave;
-  font-size: 12px;
-  font-weight: bold;
-  letter-spacing: 0.04em;
-  text-transform: uppercase;
-}
-
-.titulo-portada {
-  margin-bottom: 14px;
-  font-size: 36px;
-
-  em {
-    color: variables.$color-acento;
-    font-style: normal;
-  }
-}
-
-.subtitulo-portada {
-  max-width: 480px;
-  margin-left: auto;
-  margin-right: auto;
-  font-size: 16px;
-}
-
-.texto-portada {
-  max-width: 480px;
-  margin-left: auto;
-  margin-right: auto;
-  font-size: 14px;
-  color: variables.$color-texto-secundario;
-}
-
 .grilla-opciones {
   display: grid;
   grid-template-columns: 1fr 1fr;
   gap: 16px;
   margin-top: 30px;
-
-  @include mixins.movil {
-    grid-template-columns: 1fr;
-  }
 }
 
 .tarjeta-rol {
-  display: block;
-  padding: 24px 18px;
-  border-radius: variables.$radio;
   background-color: variables.$color-superficie-suave;
+  border-radius: variables.$radio;
+  padding: 24px 18px;
   text-align: center;
+  display: block;
   transition: transform 0.15s ease;
 
   &:hover {
@@ -85,12 +77,12 @@
 
 .icono {
   display: block;
-  margin-bottom: 10px;
   font-size: 30px;
+  margin-bottom: 10px;
 }
 
 .titulo {
   display: block;
-  margin-bottom: 4px;
   font-weight: bold;
+  margin-bottom: 4px;
 }
