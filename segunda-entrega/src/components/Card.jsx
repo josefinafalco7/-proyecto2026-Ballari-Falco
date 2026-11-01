@@ -1,24 +1,24 @@
 import PropTypes from 'prop-types';
 
 /**
- * Tarjeta genérica y reutilizable: título, subtítulo opcional y contenido libre.
+ * Tarjeta genérica y reutilizable: un recuadro con título (legend) y contenido libre.
+ * Se usa para las direcciones, los viajes y los grupos de campos de los formularios.
  * @param {Object} props - Propiedades del componente.
- * @param {string} props.titulo - Título de la tarjeta.
- * @param {string} [props.subtitulo] - Texto secundario bajo el título.
- * @param {React.ReactNode} props.children - Contenido que va dentro de la tarjeta.
+ * @param {string} props.titulo - Título del recuadro.
+ * @param {string} props.clase - Clase de estilo: "recuadro-direccion", "recuadro-viaje" o "grupo-formulario".
+ * @param {React.ReactNode} props.children - Contenido del recuadro.
  * @returns {JSX.Element} La tarjeta.
  */
-const Card = ({ titulo, subtitulo = '', children }) => (
-  <article className="tarjeta">
-    <h3 className="tarjeta-titulo">{titulo}</h3>
-    {subtitulo && <p className="tarjeta-subtitulo">{subtitulo}</p>}
-    <div className="tarjeta-contenido">{children}</div>
-  </article>
+const Card = ({ titulo, clase, children }) => (
+  <fieldset className={clase}>
+    <legend>{titulo}</legend>
+    {children}
+  </fieldset>
 );
 
 Card.propTypes = {
   titulo: PropTypes.string.isRequired,
-  subtitulo: PropTypes.string,
+  clase: PropTypes.string.isRequired,
   children: PropTypes.node.isRequired,
 };
 
