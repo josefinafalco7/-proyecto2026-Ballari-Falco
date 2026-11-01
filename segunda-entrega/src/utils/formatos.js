@@ -1,16 +1,4 @@
 /**
- * Da formato de pesos argentinos a un número.
- * @param {number} precio - Monto a mostrar.
- * @returns {string} Monto con formato, por ejemplo "$ 1.500".
- */
-export const formatearPrecio = (precio) =>
-  new Intl.NumberFormat('es-AR', {
-    style: 'currency',
-    currency: 'ARS',
-    maximumFractionDigits: 0,
-  }).format(precio);
-
-/**
  * Convierte una fecha "AAAA-MM-DD" (la que entrega un input date) a "DD/MM/AAAA".
  * @param {string} fecha - Fecha en formato AAAA-MM-DD.
  * @returns {string} Fecha en formato DD/MM/AAAA.
@@ -27,3 +15,18 @@ export const formatearFecha = (fecha) => {
  */
 export const nombreDireccion = (direccion) =>
   direccion === 'nc-ucc' ? 'Nueva Córdoba → UCC' : 'UCC → Nueva Córdoba';
+
+/**
+ * Da formato a un precio en pesos.
+ * @param {number} precio - Monto a mostrar.
+ * @returns {string} Monto con el signo $, por ejemplo "$1500".
+ */
+export const formatearPrecio = (precio) => `$${precio}`;
+
+/**
+ * Arma el texto de asientos libres, en singular o plural según la cantidad.
+ * @param {number} asientos - Cantidad de asientos disponibles.
+ * @returns {string} Texto como "1 asiento disponible" o "3 asientos disponibles".
+ */
+export const textoAsientosDisponibles = (asientos) =>
+  `${asientos} ${asientos === 1 ? 'asiento disponible' : 'asientos disponibles'}`;

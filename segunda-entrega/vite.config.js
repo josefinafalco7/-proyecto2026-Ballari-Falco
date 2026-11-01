@@ -17,6 +17,8 @@ export default defineConfig({
       '@api': ruta('./src/api'),
       '@assets': ruta('./src/assets'),
       '@components': ruta('./src/components'),
+      '@context': ruta('./src/context'),
+      '@hooks': ruta('./src/hooks'),
       '@pages': ruta('./src/pages'),
       '@styles': ruta('./src/styles'),
       '@utils': ruta('./src/utils'),
