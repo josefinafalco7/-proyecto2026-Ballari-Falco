@@ -12,6 +12,7 @@ El proyecto tiene dos entregas: la **primera** (HTML, CSS y JavaScript, en la ca
 4. [Segunda entrega: cómo ejecutar el proyecto](#segunda-entrega-cómo-ejecutar-el-proyecto)
 5. [Segunda entrega: estructura y funcionamiento](#segunda-entrega-estructura-y-funcionamiento)
 6. [Tecnologías utilizadas](#tecnologías-utilizadas)
+7. [Dependencias y vulnerabilidades](#dependencias-y-vulnerabilidades)
 
 ## Autores
 
@@ -187,3 +188,16 @@ Los formularios validan mientras se escribe (`onChange`) y muestran el error deb
 - [ESLint](https://eslint.org/) y [Prettier](https://prettier.io/) para revisar y dar formato al código
 - [Node.js](https://nodejs.org/) 22.12 o superior
 - [Google Fonts](https://fonts.google.com/) (Poppins e Inter)
+
+## Dependencias y vulnerabilidades
+
+Resultado de `npm audit` dentro de `segunda-entrega` (verificado el 31 de octubre de 2026): **0 vulnerabilidades**. No hay ninguna crítica, alta, moderada ni baja.
+
+Para llegar a ese resultado hubo que tomar estas decisiones, que quedan aclaradas acá:
+
+- **`overrides` de `minimatch`.** Al instalar las herramientas de desarrollo, `npm audit` informaba 9 vulnerabilidades de gravedad **moderada** (ninguna crítica ni alta), todas por el mismo aviso: [GHSA-g3hv-75wg-m249](https://github.com/advisories/GHSA-g3hv-75wg-m249), una posible negación de servicio en `minimatch`, que afecta a todas sus versiones anteriores a la 11.0.1. Estaban en ESLint y en su plugin de React (dependencias de desarrollo, que no forman parte de lo que se ejecuta en el navegador). Se resolvió con el bloque `overrides` de `package.json`, que obliga a usar `minimatch` 11.0.3 o superior.
+- **Efecto secundario del `overrides`.** Dos reglas opcionales de `eslint-plugin-react` (`jsx-pascal-case` y `forbid-component-props`) dejarían de funcionar si se activaran. El proyecto no las usa.
+- **ESLint 9 y no 10.** `eslint-plugin-react` solo es compatible hasta ESLint 9. Con ESLint 10, `npm install` falla por un conflicto de versiones.
+- **json-server en versión beta.** Se usa la `1.0.0-beta.15`, fijada con la versión exacta, porque es la que instala `npm i -D json-server` hoy. Se usa solo para desarrollo, como servicio simulado de datos.
+
+Con el tiempo pueden aparecer avisos nuevos, porque se descubren fallas nuevas en paquetes que ya existían. Si `npm audit` muestra alguno, se revisa con `npm audit` y, si no se puede resolver, se documenta acá con su gravedad y el motivo.
