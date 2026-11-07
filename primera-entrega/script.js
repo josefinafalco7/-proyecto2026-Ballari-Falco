@@ -150,6 +150,13 @@ const validarContrasena = (campo) => {
 };
 
 /**
+ * Devuelve la fecha de hoy en formato AAAA-MM-DD.
+ * @method obtenerFechaDeHoy
+ * @return {string} La fecha de hoy.
+ */
+const obtenerFechaDeHoy = () => new Date().toISOString().split("T")[0];
+
+/**
  * Comprueba que una fecha no sea anterior al día de hoy.
  * Si está mal, avisa con alert y vacía el campo.
  * @method validarFechaFutura
@@ -157,7 +164,7 @@ const validarContrasena = (campo) => {
  * @return {boolean} true si la fecha es hoy o futura, false si ya pasó.
  */
 const validarFechaFutura = (campo) => {
-  const hoy = new Date().toISOString().split("T")[0];
+  const hoy = obtenerFechaDeHoy();
   if (campo.value < hoy) {
     alert("La fecha no puede ser anterior a hoy.");
     campo.value = "";
@@ -419,6 +426,26 @@ const prepararPaginaPublicar = () => {
 };
 
 /**
+ * Valida los datos de un viaje (fecha, asientos, precio y punto de encuentro),
+ * en ese orden. Con el primero que esté mal avisa y deja de revisar.
+ * Se usa al publicar un viaje y al editarlo.
+ * @method validarDatosViaje
+ * @param {HTMLInputElement} campoFecha - El input de la fecha.
+ * @param {HTMLInputElement} campoAsientos - El input de la cantidad de asientos.
+ * @param {HTMLInputElement} campoPrecio - El input del precio por asiento.
+ * @param {HTMLInputElement} campoPunto - El input del punto de encuentro.
+ * @return {boolean} true si todos los datos son válidos, false si alguno no lo es.
+ */
+const validarDatosViaje = (campoFecha, campoAsientos, campoPrecio, campoPunto) => {
+  return (
+    validarFechaFutura(campoFecha) &&
+    validarAsientos(campoAsientos) &&
+    validarPrecio(campoPrecio) &&
+    validarTextoObligatorio(campoPunto, "Punto de encuentro")
+  );
+};
+
+/**
  * Valida y guarda un viaje nuevo publicado por el conductor logueado.
  * Se llama desde el onsubmit del formulario de publicar_viaje.html.
  * @method publicarViaje
@@ -444,10 +471,7 @@ const publicarViaje = (evento) => {
   const campoPrecio = document.getElementById("precio");
   const campoPunto = document.getElementById("punto-encuentro");
 
-  if (!validarFechaFutura(campoFecha)) return;
-  if (!validarAsientos(campoAsientos)) return;
-  if (!validarPrecio(campoPrecio)) return;
-  if (!validarTextoObligatorio(campoPunto, "Punto de encuentro")) return;
+  if (!validarDatosViaje(campoFecha, campoAsientos, campoPrecio, campoPunto)) return;
 
   const viajes = obtenerViajes();
 
@@ -470,6 +494,40 @@ const publicarViaje = (evento) => {
   window.location.href = "conductor.html";
 };
 
+// VIAJES: texto y estructura que comparten los listados
+
+/**
+ * Devuelve el texto de la dirección de un viaje para mostrar en pantalla.
+ * @method obtenerNombreDireccion
+ * @param {string} direccion - "ucc-nc" o "nc-ucc".
+ * @return {string} "Nueva Córdoba → UCC" o "UCC → Nueva Córdoba".
+ */
+const obtenerNombreDireccion = (direccion) =>
+  direccion === "nc-ucc" ? "Nueva Córdoba → UCC" : "UCC → Nueva Córdoba";
+
+/**
+ * Crea la estructura que comparten todos los listados de viajes: un <li> con
+ * un <fieldset> (el recuadro) cuya leyenda es la hora y la fecha del viaje.
+ * Quien la usa le agrega al fieldset el resto del contenido.
+ * @method crearRecuadroViaje
+ * @param {Object} viaje - El viaje a mostrar.
+ * @return {{li: HTMLLIElement, fieldset: HTMLFieldSetElement}} El <li> y el <fieldset> que contiene.
+ */
+const crearRecuadroViaje = (viaje) => {
+  const li = document.createElement("li");
+
+  const fieldset = document.createElement("fieldset");
+  fieldset.className = "recuadro-viaje";
+
+  const legend = document.createElement("legend");
+  legend.textContent = viaje.hora + " · " + formatearFecha(viaje.fecha);
+
+  fieldset.appendChild(legend);
+  li.appendChild(fieldset);
+
+  return { li, fieldset };
+};
+
 // CONDUCTOR.HTML: mostrar mis viajes publicados
 
 /**
@@ -480,19 +538,10 @@ const publicarViaje = (evento) => {
  * @return {HTMLLIElement} El elemento <li> ya armado.
  */
 const crearFilaViajeConductor = (viaje) => {
-  const li = document.createElement("li");
-
-  const fieldset = document.createElement("fieldset");
-  fieldset.className = "recuadro-viaje";
-
-  const legend = document.createElement("legend");
-  legend.textContent = viaje.hora + " · " + formatearFecha(viaje.fecha);
+  const { li, fieldset } = crearRecuadroViaje(viaje);
 
   const pDireccion = document.createElement("p");
-  pDireccion.textContent =
-    viaje.direccion === "nc-ucc"
-      ? "Nueva Córdoba → UCC"
-      : "UCC → Nueva Córdoba";
+  pDireccion.textContent = obtenerNombreDireccion(viaje.direccion);
 
   const pDatos = document.createElement("p");
   pDatos.textContent =
@@ -576,14 +625,11 @@ const crearFilaViajeConductor = (viaje) => {
 
 
   // ARMAR EL VIAJE
-  fieldset.appendChild(legend);
   fieldset.appendChild(pDireccion);
   fieldset.appendChild(pDatos);
   fieldset.appendChild(pEncuentro);
   fieldset.appendChild(divPasajeros);
   fieldset.appendChild(divAcciones);
-
-  li.appendChild(fieldset);
 
   return li;
 };
@@ -694,13 +740,7 @@ const formatearFecha = (fecha) => {
  * @return {HTMLLIElement} El elemento <li> ya armado.
  */
 const crearFilaViajeListado = (viaje) => {
-  const li = document.createElement("li");
-
-  const fieldset = document.createElement("fieldset");
-  fieldset.className = "recuadro-viaje";
-
-  const legend = document.createElement("legend");
-  legend.textContent = viaje.hora + " · " + formatearFecha(viaje.fecha);
+  const { li, fieldset } = crearRecuadroViaje(viaje);
 
   const pConductor = document.createElement("p");
   pConductor.textContent = "Conductor: " + viaje.conductorNombre;
@@ -716,13 +756,11 @@ const crearFilaViajeListado = (viaje) => {
   botonDetalle.className = "boton boton-secundario";
   botonDetalle.textContent = "Ver detalle →";
 
-  fieldset.appendChild(legend);
   fieldset.appendChild(pConductor);
   fieldset.appendChild(pDatos);
   fieldset.appendChild(pPrecio);
   fieldset.appendChild(botonDetalle);
 
-  li.appendChild(fieldset);
   return li;
 };
 
@@ -750,7 +788,7 @@ const mostrarViajesPasajero = () => {
   const viajes = obtenerViajes();
   const esNcUcc = window.location.pathname.includes("viajes-nc-ucc");
   const direccionBuscada = esNcUcc ? "nc-ucc" : "ucc-nc";
-  const hoy = new Date().toISOString().split("T")[0];
+  const hoy = obtenerFechaDeHoy();
 
   const viajesDisponibles = viajes.filter((viaje) => {
     return viaje.direccion === direccionBuscada &&
@@ -778,6 +816,15 @@ const mostrarViajesPasajero = () => {
 // DETALLE_VIAJE.HTML: ver (pasajero) o editar (conductor)
 
 /**
+ * Lee un parámetro de la dirección de la página (lo que va después del "?").
+ * @method obtenerParametroUrl
+ * @param {string} nombre - Nombre del parámetro, por ejemplo "id" o "modo".
+ * @return {string|null} El valor del parámetro, o null si no está en la dirección.
+ */
+const obtenerParametroUrl = (nombre) =>
+  new URLSearchParams(window.location.search).get(nombre);
+
+/**
  * Carga el viaje indicado por "id" en la URL y muestra la vista que
  * corresponda según "modo": solo lectura con botón Reservar para el
  * pasajero, o el formulario de edición para el conductor dueño del viaje.
@@ -790,9 +837,8 @@ const cargarDetalleViaje = () => {
   const usuarioActual = exigirSesion();
   if (!usuarioActual) return;
 
-  const parametros = new URLSearchParams(window.location.search);
-  const idViaje = Number(parametros.get("id"));
-  const modo = parametros.get("modo") || "pasajero";
+  const idViaje = Number(obtenerParametroUrl("id"));
+  const modo = obtenerParametroUrl("modo") || "pasajero";
 
   const viajes = obtenerViajes();
   const viaje = viajes.find((v) => v.id === idViaje);
@@ -824,8 +870,9 @@ const cargarDetalleViaje = () => {
   }
 
   vistaConductor.classList.add("oculto");
-  document.getElementById("titulo-detalle").textContent = viaje.direccion === "nc-ucc" ? "Nueva Córdoba → UCC" : "UCC → Nueva Córdoba";
-  document.getElementById("detalle-direccion").textContent = viaje.direccion === "nc-ucc" ? "Nueva Córdoba → UCC" : "UCC → Nueva Córdoba";
+  const nombreDireccion = obtenerNombreDireccion(viaje.direccion);
+  document.getElementById("titulo-detalle").textContent = nombreDireccion;
+  document.getElementById("detalle-direccion").textContent = nombreDireccion;
   document.getElementById("detalle-conductor").textContent = viaje.conductorNombre;
   document.getElementById("detalle-hora").textContent = viaje.hora;
   document.getElementById("detalle-fecha").textContent = formatearFecha(viaje.fecha);
@@ -856,8 +903,7 @@ const reservarViaje = () => {
   const usuarioActual = exigirSesion();
   if (!usuarioActual) return;
 
-  const parametros = new URLSearchParams(window.location.search);
-  const idViaje = Number(parametros.get("id"));
+  const idViaje = Number(obtenerParametroUrl("id"));
   const viajes = obtenerViajes();
   const viaje = viajes.find((v) => v.id === idViaje);
 
@@ -899,7 +945,7 @@ const crearFilaReserva = (reserva, viaje) => {
 
   const pRuta = document.createElement("p");
   pRuta.className = "reserva-ruta";
-  pRuta.textContent = viaje.direccion === "nc-ucc" ? "Nueva Córdoba → UCC" : "UCC → Nueva Córdoba";
+  pRuta.textContent = obtenerNombreDireccion(viaje.direccion);
 
   const pFecha = document.createElement("p");
   pFecha.textContent = formatearFecha(viaje.fecha) + " · " + viaje.hora;
@@ -1008,13 +1054,9 @@ const guardarEdicionViaje = (evento) => {
   const campoPrecio = document.getElementById("editar-precio");
   const campoPunto = document.getElementById("editar-punto-encuentro");
 
-  if (!validarFechaFutura(campoFecha)) return;
-  if (!validarAsientos(campoAsientos)) return;
-  if (!validarPrecio(campoPrecio)) return;
-  if (!validarTextoObligatorio(campoPunto, "Punto de encuentro")) return;
+  if (!validarDatosViaje(campoFecha, campoAsientos, campoPrecio, campoPunto)) return;
 
-  const parametros = new URLSearchParams(window.location.search);
-  const idViaje = Number(parametros.get("id"));
+  const idViaje = Number(obtenerParametroUrl("id"));
   const viajes = obtenerViajes();
   const viaje = viajes.find((v) => v.id === idViaje);
 
