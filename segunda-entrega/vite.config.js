@@ -19,6 +19,7 @@ export default defineConfig({
       '@components': ruta('./src/components'),
       '@context': ruta('./src/context'),
       '@hooks': ruta('./src/hooks'),
+      '@layouts': ruta('./src/layouts'),
       '@pages': ruta('./src/pages'),
       '@styles': ruta('./src/styles'),
       '@utils': ruta('./src/utils'),
