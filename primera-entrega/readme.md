@@ -127,10 +127,11 @@ segunda-entrega/
 ├── src/
 │   ├── api/             Funciones que consultan el servicio simulado con fetch y async/await
 │   ├── assets/          Imagen importada desde el código (logo de la portada)
-│   ├── components/      Componentes reutilizables (Button, Card, Input, Select, Layout, Header...)
+│   ├── components/      Componentes reutilizables (Button, Card, Input, Select, Header, Footer...)
 │   ├── context/         Sesión del usuario (guardada en localStorage)
 │   ├── data/            db.json: los datos del servicio simulado
 │   ├── hooks/           useFormulario: formularios con validación en tiempo real
+│   ├── layouts/         Layout: la estructura común de las páginas (encabezado, Outlet y pie)
 │   ├── pages/           Una página por ruta
 │   ├── styles/          Estilos en archivos .scss
 │   ├── utils/           Formatos, validaciones y funciones de sesión
@@ -141,7 +142,7 @@ segunda-entrega/
 └── package.json         Dependencias y scripts
 ```
 
-Los imports se hacen con alias (`@components`, `@pages`, `@api`, `@styles`, `@utils`, `@hooks`, `@context`, `@assets` y `@` para `src`), definidos en `vite.config.js`.
+Los imports se hacen con alias (`@components`, `@layouts`, `@pages`, `@api`, `@styles`, `@utils`, `@hooks`, `@context`, `@assets` y `@` para `src`), definidos en `vite.config.js`.
 
 ### Rutas
 
@@ -156,7 +157,7 @@ Los imports se hacen con alias (`@components`, `@pages`, `@api`, `@styles`, `@ut
 | `publicar_viaje.html`                       | `/conductor/publicar`                                 | Conductores                  |
 | `detalle_viaje.html` (modo conductor)       | `/conductor/editar/:id`                               | Dueño del viaje              |
 
-Todas las rutas comparten el componente `Layout` (encabezado, contenido y pie), que dibuja la página de cada ruta con un `Outlet`.
+Todas las rutas comparten el `Layout` (carpeta `layouts`: encabezado, contenido y pie), que dibuja la página de cada ruta con un `Outlet`. Está separado de `components` porque no es una pieza reutilizable como `Button` o `Card`: define la estructura de toda la página.
 
 ### Datos
 
